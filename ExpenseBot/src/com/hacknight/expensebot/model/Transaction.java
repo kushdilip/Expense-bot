@@ -1,7 +1,10 @@
 package com.hacknight.expensebot.model;
 
-public class Transaction {
+import java.util.Comparator;
 
+public class Transaction implements Comparable<Transaction>{
+
+	private int id;
 	private float amount;
 	private String date;
 	private String details;
@@ -16,6 +19,10 @@ public class Transaction {
 		this.income = income;
 	}
 	
+	public Transaction() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public float getAmount()
 	{
 		return this.amount;
@@ -40,7 +47,49 @@ public class Transaction {
 	{
 		return this.income;
 	}
+
+	public void setAmount(float amount) {
+		this.amount = amount;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public void setIncome(boolean income) {
+		this.income = income;
+	}
 	
+	public int getId() {
+		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Override
+	public int compareTo(Transaction another) {
+		// TODO Auto-generated method stub
+		return another.id - this.id;
+	}
+	
+	class TransactionAmountComparator implements Comparator<Transaction> {
+
+		@Override
+		public int compare(Transaction lhs, Transaction rhs) {
+			// TODO Auto-generated method stub
+			return (int)(lhs.getAmount() - rhs.getAmount()) ;
+		}
+	}
 	
 	
 	

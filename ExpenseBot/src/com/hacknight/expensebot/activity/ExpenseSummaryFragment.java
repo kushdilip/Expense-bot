@@ -22,7 +22,7 @@ public class ExpenseSummaryFragment extends Fragment {
         totalTransactions = (TextView) v.findViewById(R.id.totalTransactions);
 		DBHandler handler = new DBHandler(getActivity());
 
-		int count = handler.getTransactionCount();
+		int count = handler.getAllTransactions().size();
 		
 		Toast.makeText(getActivity(), " " + count ,Toast.LENGTH_LONG).show();
         

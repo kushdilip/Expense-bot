@@ -1,5 +1,6 @@
 package com.hacknight.expensebot.db;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.hacknight.expensebot.model.Transaction;
@@ -98,9 +99,26 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 	@Override
 	public List<Transaction> getAllTransactions() {
 		// TODO Auto-generated method stub
+		List<Transaction> transactionList = new ArrayList<Transaction>();
 		
+		//select all query
+		String selectQuery = "SELECT * FROM " + TABLE_TRANSACTION;
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.rawQuery(selectQuery, null);
 		
-		return null;
+		if (cursor.moveToFirst()) {
+			do {
+				Transaction transaction = new Transaction();
+				transaction.setId(cursor.getInt(0));
+				transaction.setAmount(cursor.getInt(1));
+				transaction.setDate(cursor.getString(2));
+				transaction.setType(cursor.getString(3));
+				transaction.setDetails(cursor.getString(4));
+				transactionList.add(transaction);
+			} while (cursor.moveToNext());
+		}
+		
+		return transactionList;
 	}
 
 	@Override
