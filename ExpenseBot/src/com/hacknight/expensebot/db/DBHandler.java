@@ -13,14 +13,29 @@ import com.hacknight.expensebot.model.Transaction;
 
 public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 
+	//Logcat tag
+	public static final String LOG = "DBHandler";
+	
+	//Database version
+	public static final int DATABASE_VERSION = 1;
+
+	//Database name
+	public static final String DATABASE_NAME = "ExpenseBot.db";
+
+	//Table Names
 	public static final String TABLE_TRANSACTION = "transactions";
-	public static final String COLUMN_EXPENSE_ID = "id";
+	public static final String TABLE_ACCOUNT_KIND = "account_kind";
+	
+	//Common column names
+	public static final String KEY_ID = "id";
+	public static final String KEY_CREATED_AT = "created_at";	
+	
+	
 	public static final String COLUMN_EXPENSE_AMOUNT = "amount";
 	public static final String COLUMN_EXPENSE_DESC = "description";
 	public static final String COLUMN_EXPENSE_DATE = "expDate";
 	public static final String COLUMN_EXPENSE_ACCTYPE = "accType";
 
-	public static final String TABLE_TYPE_NAME = "accountType";
 	public static final String COLUMN_ACC_TYPE = "accType";
 	public static final String COLUMN_ACC_TYPE_CASH = "Cash";
 	public static final String COLUMN_ACC_TYPE_ACCOUNT = "Account";
@@ -33,20 +48,20 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 	private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS "
 			+ TABLE_TRANSACTION;
 	private static final String SQL_DELETE_TYPE = "DROP TABLE IF EXISTS "
-			+ TABLE_TYPE_NAME;
+			+ TABLE_ACCOUNT_KIND;
 
-	public static final int DATABASE_VERSION = 1;
-	public static final String DATABASE_NAME = "ExpenseBot.db";
-
+	
 	public DBHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
 	public void onCreate(SQLiteDatabase db) {
 
+		
+		
 		// add field for account type
 		String CREATE_EXPENSE_ENTRIES = "CREATE TABLE " + TABLE_TRANSACTION + " (" + 
-				COLUMN_EXPENSE_ID + " INTEGER PRIMARY KEY,"+ 
+				KEY_ID + " INTEGER PRIMARY KEY,"+ 
 				COLUMN_EXPENSE_AMOUNT + " number ,"+ 
 				COLUMN_EXPENSE_DATE + " text, " +
 				COLUMN_ACC_TYPE + " text, "+
@@ -54,14 +69,14 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 
 		db.execSQL(CREATE_EXPENSE_ENTRIES);
 
-		String CREATE_ACCOUNTS_ENTRY = "CREATE TABLE " + TABLE_TYPE_NAME + " ("
+		String CREATE_ACCOUNTS_ENTRY = "CREATE TABLE " + TABLE_ACCOUNT_KIND + " ("
 				+ COLUMN_ACC_TYPE + TEXT_TYPE + ");";
 
 		db.execSQL(CREATE_ACCOUNTS_ENTRY);
 
-		db.execSQL("INSERT INTO " + TABLE_TYPE_NAME + " VALUES ('"
+		db.execSQL("INSERT INTO " + TABLE_ACCOUNT_KIND + " VALUES ('"
 				+ COLUMN_ACC_TYPE_CASH + "');");
-		db.execSQL("INSERT INTO " + TABLE_TYPE_NAME + " VALUES ('"
+		db.execSQL("INSERT INTO " + TABLE_ACCOUNT_KIND + " VALUES ('"
 				+ COLUMN_ACC_TYPE_ACCOUNT + "');");
 	}
 
