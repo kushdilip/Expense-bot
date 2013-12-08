@@ -17,7 +17,7 @@ public class ExpenseSummaryFragment extends Fragment {
 		
 	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View v = inflater.inflate(R.layout.summarylayout, null);		
+        View v = inflater.inflate(R.layout.summary_layout, null);		
         
         totalTransactions = (TextView) v.findViewById(R.id.totalTransactions);
 		DBHandler handler = new DBHandler(getActivity());

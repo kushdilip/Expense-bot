@@ -42,7 +42,7 @@ public class EditEntryActivity extends Activity {
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		this.setContentView(R.layout.editentry);
+		this.setContentView(R.layout.new_transaction);
 		
 		context = this;
 		final DBHandler handler = new DBHandler(this);

@@ -22,7 +22,7 @@ public class ExpenseListFragment extends Fragment {
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View v = inflater.inflate(R.layout.listlayout, null);       
+        View v = inflater.inflate(R.layout.transaction_list_layout, null);       
         listView = (ListView) v.findViewById(R.id.listview);
         return v;       
     }
