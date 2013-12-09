@@ -8,6 +8,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.TableLayout;
 
 import com.hacknight.expensebot.model.Transaction;
 
@@ -23,27 +24,59 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 	public static final String DATABASE_NAME = "ExpenseBot.db";
 
 	//Table Names
-	public static final String TABLE_TRANSACTION = "transactions";
+	public static final String TABLE_TRANSACTION = "transaction";
+	public static final String TABLE_CATEGORY = "category";
 	public static final String TABLE_ACCOUNT_KIND = "account_kind";
 	
 	//Common column names
 	public static final String KEY_ID = "id";
 	public static final String KEY_CREATED_AT = "created_at";	
 	
+	//TRANSACTION Table - column names
+	public static final String KEY_AMOUNT = "amount";
+	public static final String KEY_DESCRIPTION = "description";
+	public static final String KEY_ACCOUNT_KIND_ID = "account_kind_id";
+	public static final String KEY_TRANSACTION_KIND = "transaction_kind";
+	public static final String KEY_CATEGORY_ID = "category_id";
 	
-	public static final String COLUMN_EXPENSE_AMOUNT = "amount";
-	public static final String COLUMN_EXPENSE_DESC = "description";
-	public static final String COLUMN_EXPENSE_DATE = "expDate";
-	public static final String COLUMN_EXPENSE_ACCTYPE = "accType";
-
-	public static final String COLUMN_ACC_TYPE = "accType";
+	//Category Table column name
+	public static final String KEY_CATEGORY_NAME = "category_name";
+	
+	//Category Table column name
+	public static final String KEY_ACCOUNT_NAME = "account_name";
+		
+	
 	public static final String COLUMN_ACC_TYPE_CASH = "Cash";
 	public static final String COLUMN_ACC_TYPE_ACCOUNT = "Account";
 
-	private static final String TEXT_TYPE = " TEXT";
-	private static final String NUMBER_TYPE = " NUMBER";
-	private static final String DATE_TYPE = " DATE";
-	private static final String COMMA_SEP = ",";
+	
+	//Table Create Statements
+	//Transaction table create statement
+	private static final String CREATE_TABLE_TRANSACTION = "CREATE TABLE" + TABLE_TRANSACTION + " ("
+			  + KEY_ID + " INTEGER PRIMARY KEY,"
+			  + KEY_AMOUNT + "REAL,"
+			  + KEY_CREATED_AT + " TEXT,"
+			  + KEY_ACCOUNT_KIND_ID +  " INTEGER,"
+			  + KEY_TRANSACTION_KIND + " INTEGER(1) );";
+
+	//Category table create statement
+	private static final String CREATE_TABLE_CATEGORY = "CREATE TABLE " + TABLE_CATEGORY + " ("
+			 + KEY_ID + " INTEGER PRIMARY KEY,"
+			 + KEY_CATEGORY_NAME + " TEXT );";
+	
+	//Account_kind table create statement
+		private static final String CREATE_TABLE_ACCOUNT_KIND = "CREATE TABLE " + TABLE_ACCOUNT_KIND + " ("
+				 + KEY_ID + " INTEGER PRIMARY KEY,"
+				 + KEY_ACCOUNT_NAME + " TEXT );";
+		
+	
+	
+	
+	
+//	private static final String TEXT_TYPE = " TEXT";
+//	private static final String NUMBER_TYPE = " NUMBER";
+//	private static final String DATE_TYPE = " DATE";
+//	private static final String COMMA_SEP = ",";
 
 	private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS "
 			+ TABLE_TRANSACTION;
@@ -62,15 +95,15 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 		// add field for account type
 		String CREATE_EXPENSE_ENTRIES = "CREATE TABLE " + TABLE_TRANSACTION + " (" + 
 				KEY_ID + " INTEGER PRIMARY KEY,"+ 
-				COLUMN_EXPENSE_AMOUNT + " number ,"+ 
-				COLUMN_EXPENSE_DATE + " text, " +
-				COLUMN_ACC_TYPE + " text, "+
-				COLUMN_EXPENSE_DESC + " text );";
+				KEY_AMOUNT + " number ,"+ 
+				KEY_CREATED_AT + " text, " +
+				KEY_TRANSACTION_KIND + " text, "+
+				KEY_DESCRIPTION + " text );";
 
 		db.execSQL(CREATE_EXPENSE_ENTRIES);
 
 		String CREATE_ACCOUNTS_ENTRY = "CREATE TABLE " + TABLE_ACCOUNT_KIND + " ("
-				+ COLUMN_ACC_TYPE + TEXT_TYPE + ");";
+				+ KEY_TRANSACTION_KIND + " TEXT" + ");";
 
 		db.execSQL(CREATE_ACCOUNTS_ENTRY);
 
@@ -96,10 +129,10 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 		// TODO Auto-generated method stub
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
-		values.put(COLUMN_EXPENSE_AMOUNT, transaction.getAmount());
-		values.put(COLUMN_EXPENSE_DESC, transaction.getDetails());
-		values.put(COLUMN_EXPENSE_DATE, transaction.getDate());
-		values.put(COLUMN_EXPENSE_ACCTYPE, transaction.getType());
+		values.put(KEY_AMOUNT, transaction.getAmount());
+		values.put(KEY_DESCRIPTION, transaction.getDetails());
+		values.put(KEY_CREATED_AT, transaction.getDate());
+		values.put(KEY_ACCOUNT_KIND_ID, transaction.getType());
 		
 		db.insert(TABLE_TRANSACTION, null, values);
 		db.close();
