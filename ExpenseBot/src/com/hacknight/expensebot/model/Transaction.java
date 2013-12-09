@@ -6,75 +6,119 @@ public class Transaction implements Comparable<Transaction>{
 
 	private int id;
 	private float amount;
-	private String date;
 	private String details;
-	private String type;
-	private boolean income;
-	
-	public Transaction(float amount, String date, String details, String type, boolean income) {
-		this.amount = amount;
-		this.date = date;
-		this.details = details;
-		this.type = type;
-		this.income = income;
-	}
+	private short transactionKind;
+	private String date;
+	private int accountKindId;
+	private String accountKindName;
+	private int categoryId;
+	private String categoryName;
 	
 	public Transaction() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public float getAmount()
-	{
-		return this.amount;
+
+	public Transaction(float amount, String date, int accountKindId) {
+		this.amount = amount;
+		this.date = date;
+		this.accountKindId = this.accountKindId;
+		this.categoryId = 1;
+		this.transactionKind = 0;
 	}
 
-	public String getDate()
-	{
-		return this.date;
+
+	public int getId() {
+		return id;
 	}
 
-	public String getDetails()
-	{
-		return this.details;
-	}
-	
-	public String getType()
-	{
-		return this.type;
+
+	public float getAmount() {
+		return amount;
 	}
 
-	public boolean isIncome()
-	{
-		return this.income;
+
+	public String getDetails() {
+		return details;
 	}
+
+
+	public short getTransactionKind() {
+		return transactionKind;
+	}
+
+
+	public String getDate() {
+		return date;
+	}
+
+
+
+
+	public String getAccountKindName() {
+		return accountKindName;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 	public void setAmount(float amount) {
 		this.amount = amount;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
-	}
 
 	public void setDetails(String details) {
 		this.details = details;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+
+	public void setTransactionKind(short transactionKind) {
+		this.transactionKind = transactionKind;
 	}
 
-	public void setIncome(boolean income) {
-		this.income = income;
+
+	public void setDate(String date) {
+		this.date = date;
 	}
-	
-	public int getId() {
-		return id;
+
+
+	public void setAccountKindName(String accountKindName) {
+		this.accountKindName = accountKindName;
 	}
-	
-	public void setId(int id) {
-		this.id = id;
+
+	public int getAccountKindId() {
+		return accountKindId;
 	}
+
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+
+	public String getCategoryName() {
+		return categoryName;
+	}
+
+
+	public void setAccountKindId(int accountKindId) {
+		this.accountKindId = accountKindId;
+	}
+
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+
 
 	@Override
 	public int compareTo(Transaction another) {

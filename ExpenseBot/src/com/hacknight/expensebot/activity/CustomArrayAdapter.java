@@ -69,7 +69,7 @@ public class CustomArrayAdapter extends ArrayAdapter<Transaction> {
 		Holder.date.setText(m.getDate());
 		Holder.model = m;
 		Holder.position = position;
-		if (Holder.model.isIncome()) {
+		if (Holder.model.getTransactionKind() == 0) {
 			Holder.icon.setImageResource(R.drawable.increase);
 			Holder.amount.setTextColor(Color.GREEN);
 		} else {

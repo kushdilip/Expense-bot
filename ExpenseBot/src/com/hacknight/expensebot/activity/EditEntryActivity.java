@@ -35,7 +35,7 @@ public class EditEntryActivity extends Activity {
 	float amount;
 	String date;
 	String details;
-	String type;
+	int accountKind;
 	Context context;
 
 	@SuppressWarnings("deprecation")
@@ -99,15 +99,16 @@ public class EditEntryActivity extends Activity {
 				details = edit_details.getText().toString();
 				switch (edit_type.getCheckedRadioButtonId()) {
 				case R.id.cash:
-					type = "cash";
+					accountKind = 1;
 					break;
 				case R.id.account:
-					type = "account";
+					accountKind = 2;
 					break;
 				}
 				
 				
-				handler.addTransaction(new Transaction(amount, date, " ",type, false));
+//				handler.addTransaction(new Transaction(amount, date, " ",type, false));
+				handler.addTransaction(new Transaction(amount, date, accountKind));
 				
 				
 				int count = handler.getTransactionCount();

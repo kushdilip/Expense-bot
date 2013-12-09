@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.TableLayout;
 
+import com.hacknight.expensebot.model.AccountKind;
 import com.hacknight.expensebot.model.Transaction;
 
 public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
@@ -54,10 +55,12 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 	//Transaction table create statement
 	private static final String CREATE_TABLE_TRANSACTION = "CREATE TABLE" + TABLE_TRANSACTION + " ("
 			  + KEY_ID + " INTEGER PRIMARY KEY,"
-			  + KEY_AMOUNT + "REAL,"
+			  + KEY_AMOUNT + " REAL,"
+			  + KEY_DESCRIPTION + " TEXT,"
+			  + KEY_TRANSACTION_KIND + " INTEGER(1),"
 			  + KEY_CREATED_AT + " TEXT,"
 			  + KEY_ACCOUNT_KIND_ID +  " INTEGER,"
-			  + KEY_TRANSACTION_KIND + " INTEGER(1) );";
+			  + KEY_CATEGORY_ID + " INTEGER );";
 
 	//Category table create statement
 	private static final String CREATE_TABLE_CATEGORY = "CREATE TABLE " + TABLE_CATEGORY + " ("
@@ -68,55 +71,28 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 		private static final String CREATE_TABLE_ACCOUNT_KIND = "CREATE TABLE " + TABLE_ACCOUNT_KIND + " ("
 				 + KEY_ID + " INTEGER PRIMARY KEY,"
 				 + KEY_ACCOUNT_NAME + " TEXT );";
-		
-	
-	
-	
-	
-//	private static final String TEXT_TYPE = " TEXT";
-//	private static final String NUMBER_TYPE = " NUMBER";
-//	private static final String DATE_TYPE = " DATE";
-//	private static final String COMMA_SEP = ",";
-
-	private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS "
-			+ TABLE_TRANSACTION;
-	private static final String SQL_DELETE_TYPE = "DROP TABLE IF EXISTS "
-			+ TABLE_ACCOUNT_KIND;
-
-	
+			
 	public DBHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 
 	public void onCreate(SQLiteDatabase db) {
 
+		// Creating required tables
+		db.execSQL(CREATE_TABLE_TRANSACTION);
+		db.execSQL(CREATE_TABLE_ACCOUNT_KIND);
+		db.execSQL(CREATE_TABLE_CATEGORY);
 		
-		
-		// add field for account type
-		String CREATE_EXPENSE_ENTRIES = "CREATE TABLE " + TABLE_TRANSACTION + " (" + 
-				KEY_ID + " INTEGER PRIMARY KEY,"+ 
-				KEY_AMOUNT + " number ,"+ 
-				KEY_CREATED_AT + " text, " +
-				KEY_TRANSACTION_KIND + " text, "+
-				KEY_DESCRIPTION + " text );";
-
-		db.execSQL(CREATE_EXPENSE_ENTRIES);
-
-		String CREATE_ACCOUNTS_ENTRY = "CREATE TABLE " + TABLE_ACCOUNT_KIND + " ("
-				+ KEY_TRANSACTION_KIND + " TEXT" + ");";
-
-		db.execSQL(CREATE_ACCOUNTS_ENTRY);
-
-		db.execSQL("INSERT INTO " + TABLE_ACCOUNT_KIND + " VALUES ('"
-				+ COLUMN_ACC_TYPE_CASH + "');");
-		db.execSQL("INSERT INTO " + TABLE_ACCOUNT_KIND + " VALUES ('"
-				+ COLUMN_ACC_TYPE_ACCOUNT + "');");
+		//create new tables
+		onCreate(db);
 	}
 
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-		db.execSQL(SQL_DELETE_ENTRIES);
-		db.execSQL(SQL_DELETE_TYPE);
+		//on upgrade drop older tables
+		db.execSQL("DROP TABLES IF EXISTS " + TABLE_TRANSACTION);
+		db.execSQL("DROP TABLES IF EXISTS " + TABLE_ACCOUNT_KIND);
+		db.execSQL("DROP TABLES IF EXISTS " + TABLE_CATEGORY);		
+		
 		onCreate(db);
 	}
 
@@ -131,9 +107,11 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 		ContentValues values = new ContentValues();
 		values.put(KEY_AMOUNT, transaction.getAmount());
 		values.put(KEY_DESCRIPTION, transaction.getDetails());
+		values.put(KEY_TRANSACTION_KIND, transaction.getTransactionKind());
 		values.put(KEY_CREATED_AT, transaction.getDate());
-		values.put(KEY_ACCOUNT_KIND_ID, transaction.getType());
-		
+		values.put(KEY_ACCOUNT_KIND_ID, transaction.getAccountKindId());
+		values.put(KEY_CATEGORY_ID, transaction.getCategoryId());
+
 		db.insert(TABLE_TRANSACTION, null, values);
 		db.close();
 	}
@@ -157,18 +135,66 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 		if (cursor.moveToFirst()) {
 			do {
 				Transaction transaction = new Transaction();
+				
 				transaction.setId(cursor.getInt(0));
-				transaction.setAmount(cursor.getInt(1));
-				transaction.setDate(cursor.getString(2));
-				transaction.setType(cursor.getString(3));
-				transaction.setDetails(cursor.getString(4));
+				transaction.setAmount(cursor.getFloat(1));
+				transaction.setDetails(cursor.getString(2));
+				transaction.setTransactionKind(cursor.getShort(3));
+				transaction.setDate(cursor.getString(4));
+				transaction.setAccountKindId(cursor.getInt(5));
+				transaction.setCategoryId(cursor.getInt(6));
+				
 				transactionList.add(transaction);
 			} while (cursor.moveToNext());
+		}
+		cursor.close();
+		
+		for (Transaction transaction : transactionList) {
+//			transaction.setAccountKindName(getAccountKindName(transaction.getCategoryId()));
+//			transaction.setCategoryName(getCategoryName(transaction.getCategoryId()));
 		}
 		
 		return transactionList;
 	}
 
+	public String getAccountKindName(int accountKindId){
+		String accountKindName = "";
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		String selectQuery = "SELECT * FROM " + TABLE_ACCOUNT_KIND + " WHERE "
+				+ KEY_ID + " = " + accountKindId;
+		
+		Cursor c = db.rawQuery(selectQuery, null);
+		
+		if(c != null)
+			c.moveToFirst();
+		
+		accountKindName = c.getString(1);
+		
+		c.close();
+		
+		return accountKindName;
+	}
+	
+	public String getCategoryName(int categoryId){
+		String categoryName = "";
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		String selectQuery = "SELECT * FROM " + TABLE_CATEGORY + " WHERE "
+				+ KEY_ID + " = " + categoryId;
+		
+		Cursor c = db.rawQuery(selectQuery, null);
+		
+		if(c != null)
+			c.moveToFirst();
+		
+		categoryName = c.getString(1);
+		
+		c.close();
+		
+		return categoryName;
+	}
+	
 	@Override
 	public int getTransactionCount() {
 		// TODO Auto-generated method stub
@@ -197,6 +223,4 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 }
