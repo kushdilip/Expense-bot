@@ -148,7 +148,23 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 	@Override
 	public Transaction getTransaction(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		Transaction transaction = new Transaction();
+		SQLiteDatabase db = this.getReadableDatabase();
+		
+		String selectQuery = "SELECT * FROM " + TABLE_TRANSACTION + " WHERE " + KEY_ID + " = " + id;
+		
+		Cursor c = db.rawQuery(selectQuery, null);
+		
+		if(c != null)
+			c.moveToFirst();
+		
+		transaction.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+		transaction.setAmount(c.getFloat(c.getColumnIndex(KEY_AMOUNT)));
+		transaction.setDate(c.getString(c.getColumnIndex(KEY_CREATED_AT)));
+		transaction.setDetails(c.getString(c.getColumnIndex(KEY_DESCRIPTION)));
+		
+		c.close();
+		return transaction;
 	}
 
 	@Override

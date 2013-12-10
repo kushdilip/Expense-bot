@@ -85,8 +85,9 @@ public class TransactionListArrayAdapter extends ArrayAdapter<Transaction> {
 				
 				
 				
-				intent.putExtra("amount", allModelItemsArray.get(position).getAmount());
-				intent.putExtra("date", allModelItemsArray.get(position).getDate());
+//				intent.putExtra("amount", allModelItemsArray.get(position).getAmount());
+//				intent.putExtra("date", allModelItemsArray.get(position).getDate());
+				intent.putExtra("id", allModelItemsArray.get(position).getId());
 				context.startActivity(intent);
 			}
 		});

@@ -33,7 +33,7 @@ import com.hacknight.expensebot.model.Category;
 import com.hacknight.expensebot.model.Transaction;
 
 @SuppressLint("SimpleDateFormat")
-public class EditEntryActivity extends Activity implements OnItemSelectedListener{
+public class EditEntryActivity extends Activity {
 
 	EditText edit_amount;
 	EditText edit_details;
@@ -72,12 +72,51 @@ public class EditEntryActivity extends Activity implements OnItemSelectedListene
 		categorySpinner = (Spinner) findViewById(R.id.categories);
 		accountSpinner = (Spinner) findViewById(R.id.accounts);
 		
-		categorySpinner.setOnItemSelectedListener(this);
-		accountSpinner.setOnItemSelectedListener(this);
+		categorySpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+		    public void onItemSelected(AdapterView<?> parent, View view, int position,
+		            long id) {
+		        // On selecting a spinner item
+		        String label = parent.getItemAtPosition(position).toString();
+		 
+		        // Showing selected spinner item
+//		        Toast.makeText(parent.getContext(), "You selected: " + label + ", " + id,
+//		                Toast.LENGTH_LONG).show();
+		        
+		        transaction.setCategoryName(label);
+		    }
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+		});
 		
-		String dateString = c.get(Calendar.YEAR)+"/"+ c.get(Calendar.MONTH)+"/"+c.get(Calendar.DATE); 
-		datepicker.setText(dateString);
-		transaction.setDate(dateString);
+		accountSpinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+		    public void onItemSelected(AdapterView<?> parent, View view, int position,
+		            long id) {
+		        // On selecting a spinner item
+		        String label = parent.getItemAtPosition(position).toString();
+		 
+		        // Showing selected spinner item
+//		        Toast.makeText(parent.getContext(), "You selected: " + label + ", " + id,
+//		                Toast.LENGTH_LONG).show();
+		        transaction.setAccountKindName(label);
+		    }
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+		});
+		
 
 		loadCategoriesSpinner();
 		loadAccountsSpinner();
@@ -113,11 +152,18 @@ public class EditEntryActivity extends Activity implements OnItemSelectedListene
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
 			actionBar.setTitle("Edit Your Transaction:");
-
-			String amount = "" + extras.getFloat("amount");
+			
+			int id = extras.getInt("id");
+			transaction = handler.getTransaction(extras.getInt("id"));
+			
+//			String amount = "" + extras.getFloat("amount");
+			String amount = "" + transaction.getAmount();
 			edit_amount.setText(amount);
+			
+			edit_details.setText(transaction.getDetails());
 
-			String date_string = extras.getString("date");
+//			String date_string = extras.getString("date");
+			String date_string = transaction.getDate();
 			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 			Date date;
 			try {
@@ -126,8 +172,7 @@ public class EditEntryActivity extends Activity implements OnItemSelectedListene
 				cal.setTime(date);
 				
 				
-				datepicker.setText(cal.get(Calendar.YEAR)+"/"+
-						cal.get(Calendar.MONTH)+"/"+cal.get(Calendar.DATE));
+				datepicker.setText(c.get(Calendar.DATE) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.YEAR)); 
 
 			} catch (java.text.ParseException e) {
 				// TODO Auto-generated catch block
@@ -136,6 +181,9 @@ public class EditEntryActivity extends Activity implements OnItemSelectedListene
 
 		} else {
 			actionBar.setTitle("Add New Transaction");
+			String dateString = c.get(Calendar.DATE) + "/" + c.get(Calendar.MONTH) + "/" + c.get(Calendar.YEAR); 
+			datepicker.setText(dateString);
+			transaction.setDate(dateString);
 		}
 
 		ok_button.setOnClickListener(new OnClickListener() {
@@ -153,12 +201,11 @@ public class EditEntryActivity extends Activity implements OnItemSelectedListene
 				
 				// handler.addTransaction(new Transaction(amount, date,
 				// " ",type, false));
-				handler.addTransaction(new Transaction(amount, date,
-						0));
+				handler.addTransaction(transaction);
 
 				int count = handler.getTransactionCount();
 
-				Toast.makeText(context, " " + count, Toast.LENGTH_LONG).show();
+//				Toast.makeText(context, " " + count, Toast.LENGTH_LONG).show();
 
 				Intent intent = new Intent(context, MainActivity.class);
 				context.startActivity(intent);
@@ -211,23 +258,4 @@ public class EditEntryActivity extends Activity implements OnItemSelectedListene
 		accountSpinner.setAdapter(dataAdapter);	
 	}
 
-	@Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position,
-            long id) {
-        // On selecting a spinner item
-        String label = parent.getItemAtPosition(position).toString();
- 
-        // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "You selected: " + label + ", " + id,
-                Toast.LENGTH_LONG).show();
-        
-        
-        
-    }
-	
-	@Override
-	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 }
