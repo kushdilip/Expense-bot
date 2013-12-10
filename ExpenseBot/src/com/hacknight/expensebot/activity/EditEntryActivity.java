@@ -56,8 +56,9 @@ public class EditEntryActivity extends Activity {
 		ok_button = (Button) findViewById(R.id.ok_button);
 		cancel_button = (Button) findViewById(R.id.cancel_button);
 		datepicker = (Button) findViewById(R.id.datepicker);
-
 		
+		datepicker.setText(c.get(Calendar.YEAR)+"/"+
+				c.get(Calendar.MONTH)+"/"+c.get(Calendar.DATE));
 
 		final DatePickerDialog.OnDateSetListener datePicker = new DatePickerDialog.OnDateSetListener() {
 

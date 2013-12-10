@@ -20,7 +20,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_amount"
         android:layout_marginTop="20dp"
-        android:text="Pick Date"
         style="?android:attr/spinnerStyle" />
     
     <EditText

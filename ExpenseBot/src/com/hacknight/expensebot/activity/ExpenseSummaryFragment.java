@@ -1,6 +1,5 @@
 package com.hacknight.expensebot.activity;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,46 +13,43 @@ import com.hacknight.expensebot.db.DBHandler;
 
 public class ExpenseSummaryFragment extends Fragment {
 	private TextView totalTransactions;
-		
-	@Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-        View v = inflater.inflate(R.layout.summary_layout, null);		
-        
-        totalTransactions = (TextView) v.findViewById(R.id.totalTransactions);
-		//DBHandler handler = new DBHandler(getActivity());
 
-		//int count = handler.getAllTransactions().size();
-		
-		//Toast.makeText(getActivity(), " " + count ,Toast.LENGTH_LONG).show();
-        
-        
-//        totalTransactions.setText("" + count);
-
-        totalTransactions.setText("hLLO");
-		
-        return v;
-        
-    }
-    
 	@Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        setUserVisibleHint(true);
-    }
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View v = inflater.inflate(R.layout.summary_layout, null);
+
+		totalTransactions = (TextView) v.findViewById(R.id.totalTransactions);
+		DBHandler handler = new DBHandler(getActivity());
+
+		int count = handler.getAllTransactions().size();
+
+		Toast.makeText(getActivity(), " " + count, Toast.LENGTH_LONG).show();
+
+		totalTransactions.setText("Total number of Expenses: " + count);
+
+		return v;
+
+	}
+
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+		super.onSaveInstanceState(outState);
+		setUserVisibleHint(true);
+	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onActivityCreated(savedInstanceState);
 
-		
-//		totalTransactions.setText("" + count);
+		// totalTransactions.setText("" + count);
 	}
-    
 
-	  public void setText(String item) {
-	    TextView view = (TextView) getView().findViewById(R.id.totalTransactions);
-	    view.setText(item);
-	  }
-    
+	public void setText(String item) {
+		TextView view = (TextView) getView().findViewById(
+				R.id.totalTransactions);
+		view.setText(item);
+	}
+
 }
