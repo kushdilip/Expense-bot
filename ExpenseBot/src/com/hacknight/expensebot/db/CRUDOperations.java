@@ -9,7 +9,7 @@ import com.hacknight.expensebot.model.Transaction;
 public interface CRUDOperations {
 
 	//Trasaction CRUD
-	public void addTransaction(Transaction transaction);
+	public long addTransaction(Transaction transaction);
 	
 	public Transaction getTransaction(int id);
 	

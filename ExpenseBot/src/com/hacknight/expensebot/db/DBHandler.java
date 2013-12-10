@@ -138,7 +138,7 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 	}
 
 	@Override
-	public void addTransaction(Transaction transaction) {
+	public long addTransaction(Transaction transaction) {
 		// TODO Auto-generated method stub
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
@@ -149,8 +149,9 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 		values.put(KEY_ACCOUNT_KIND_ID, transaction.getAccountKindId());
 		values.put(KEY_CATEGORY_ID, transaction.getCategoryId());
 
-		db.insert(TABLE_TRANSACTION, null, values);
-		db.close();
+		long transaction_id = db.insert(TABLE_TRANSACTION, null, values);
+		
+		return transaction_id;		
 	}
 
 	@Override
@@ -281,6 +282,7 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 			} while (c.moveToNext());
 		}
 		
+		c.close();
 		
 		return categories;
 		
@@ -305,7 +307,14 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 			} while (c.moveToNext());
 		}
 		
-		
+		c.close();
 		return accountKinds;
 	}
+	
+	// closing database
+    public void closeDB() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        if (db != null && db.isOpen())
+            db.close();
+    }
 }
