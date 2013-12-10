@@ -64,7 +64,7 @@ public class ExpenseListFragment extends Fragment {
         List<Transaction> transactions = handler.getAllTransactions();
         items.addAll(transactions);
         
-        Collections.sort(items);
+        //Collections.sort(items);
         
         mAdapter = new TransactionListArrayAdapter(getActivity(), this, items);
         listView.setAdapter(mAdapter);

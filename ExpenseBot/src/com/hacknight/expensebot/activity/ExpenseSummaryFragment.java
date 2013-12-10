@@ -20,15 +20,16 @@ public class ExpenseSummaryFragment extends Fragment {
         View v = inflater.inflate(R.layout.summary_layout, null);		
         
         totalTransactions = (TextView) v.findViewById(R.id.totalTransactions);
-		DBHandler handler = new DBHandler(getActivity());
+		//DBHandler handler = new DBHandler(getActivity());
 
-		int count = handler.getAllTransactions().size();
+		//int count = handler.getAllTransactions().size();
 		
-		Toast.makeText(getActivity(), " " + count ,Toast.LENGTH_LONG).show();
+		//Toast.makeText(getActivity(), " " + count ,Toast.LENGTH_LONG).show();
         
         
-        totalTransactions.setText("" + count);
+//        totalTransactions.setText("" + count);
 
+        totalTransactions.setText("hLLO");
 		
         return v;
         

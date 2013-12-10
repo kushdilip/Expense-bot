@@ -25,7 +25,7 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 	public static final String DATABASE_NAME = "ExpenseBot.db";
 
 	//Table Names
-	public static final String TABLE_TRANSACTION = "transaction";
+	public static final String TABLE_TRANSACTION = "transaction_data";
 	public static final String TABLE_CATEGORY = "category";
 	public static final String TABLE_ACCOUNT_KIND = "account_kind";
 	
@@ -53,24 +53,25 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 	
 	//Table Create Statements
 	//Transaction table create statement
-	private static final String CREATE_TABLE_TRANSACTION = "CREATE TABLE" + TABLE_TRANSACTION + " ("
+	private static final String CREATE_TABLE_TRANSACTION = "CREATE TABLE IF NOT EXISTS " 
+			  + TABLE_TRANSACTION + "("
 			  + KEY_ID + " INTEGER PRIMARY KEY,"
 			  + KEY_AMOUNT + " REAL,"
 			  + KEY_DESCRIPTION + " TEXT,"
-			  + KEY_TRANSACTION_KIND + " INTEGER(1),"
+			  + KEY_TRANSACTION_KIND + " INTEGER,"
 			  + KEY_CREATED_AT + " TEXT,"
 			  + KEY_ACCOUNT_KIND_ID +  " INTEGER,"
-			  + KEY_CATEGORY_ID + " INTEGER );";
+			  + KEY_CATEGORY_ID + " INTEGER )";
 
 	//Category table create statement
-	private static final String CREATE_TABLE_CATEGORY = "CREATE TABLE " + TABLE_CATEGORY + " ("
+	private static final String CREATE_TABLE_CATEGORY = "CREATE TABLE IF NOT EXISTS " + TABLE_CATEGORY + " ("
 			 + KEY_ID + " INTEGER PRIMARY KEY,"
-			 + KEY_CATEGORY_NAME + " TEXT );";
+			 + KEY_CATEGORY_NAME + " TEXT )";
 	
 	//Account_kind table create statement
-		private static final String CREATE_TABLE_ACCOUNT_KIND = "CREATE TABLE " + TABLE_ACCOUNT_KIND + " ("
+		private static final String CREATE_TABLE_ACCOUNT_KIND = "CREATE TABLE IF NOT EXISTS " + TABLE_ACCOUNT_KIND + " ("
 				 + KEY_ID + " INTEGER PRIMARY KEY,"
-				 + KEY_ACCOUNT_NAME + " TEXT );";
+				 + KEY_ACCOUNT_NAME + " TEXT )";
 			
 	public DBHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -83,15 +84,13 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations{
 		db.execSQL(CREATE_TABLE_ACCOUNT_KIND);
 		db.execSQL(CREATE_TABLE_CATEGORY);
 		
-		//create new tables
-		onCreate(db);
 	}
 
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		//on upgrade drop older tables
-		db.execSQL("DROP TABLES IF EXISTS " + TABLE_TRANSACTION);
-		db.execSQL("DROP TABLES IF EXISTS " + TABLE_ACCOUNT_KIND);
-		db.execSQL("DROP TABLES IF EXISTS " + TABLE_CATEGORY);		
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSACTION);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACCOUNT_KIND);
+		db.execSQL("DROP TABLE IF EXISTS " + TABLE_CATEGORY);		
 		
 		onCreate(db);
 	}
