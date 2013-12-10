@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -83,6 +82,8 @@ public class TransactionListArrayAdapter extends ArrayAdapter<Transaction> {
 				Intent intent = new Intent(context, EditEntryActivity.class);
 				
 //				allModelItemsArray.get(position).getAmount()
+				
+				
 				
 				intent.putExtra("amount", allModelItemsArray.get(position).getAmount());
 				intent.putExtra("date", allModelItemsArray.get(position).getDate());

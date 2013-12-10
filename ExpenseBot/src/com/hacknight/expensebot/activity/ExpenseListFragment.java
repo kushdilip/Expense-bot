@@ -36,27 +36,7 @@ public class ExpenseListFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-//        items.add(new Transaction(150,"12/12/2013","KFC","Card",false));
-//        items.add(new Transaction(120,"12/11/2013","KFC","Cash",true));
-//        items.add(new Transaction(1590,"12/11/2013","KFC","Cash",false));
-//        items.add(new Transaction(1510,"12/1/2013","KFC","Card",false));
-//        items.add(new Transaction(12750,"12/11/2013","KFC","Card",true));
-//        items.add(new Transaction(150,"12/5/2013","KFC","Cash",false));
-//        items.add(new Transaction(120,"12/11/2013","KFC","Cash",false));
-//        items.add(new Transaction(1590,"12/3/2013","KFC","Card",false));
-//        items.add(new Transaction(152110,"12/11/2013","KFC","Card",true));
-//        items.add(new Transaction(1250,"12/6/2013","KFC","Cash",false));
-//        items.add(new Transaction(150,"12/5/2013","KFC","Card",false));
-//        items.add(new Transaction(12000,"12/11/2013","KFC","Card",true));
-//        items.add(new Transaction(1590,"12/11/2013","KFC","Card",true));
-//        items.add(new Transaction(1510,"12/11/2013","KFC","Card",true));
-//        items.add(new Transaction(1250,"12/11/2013","KFC","Cash",true));
-//        items.add(new Transaction(150,"12/2/2013","KFC","Card",false));
-//        items.add(new Transaction(120,"12/11/2013","KFC","Card",false));
-//        items.add(new Transaction(121590,"12/11/2013","KFC","Card",true));
-//        items.add(new Transaction(1510,"12/11/2013","KFC","Card",false));
-//        items.add(new Transaction(1250,"12/11/2013","KFC","Card",true));
-//        // GlobalList is a class that holds global variables, arrays etc
+        // GlobalList is a class that holds global variables, arrays etc
         // getMenuCategories returns global arraylist which is initialized in GlobalList class
         
         DBHandler handler = new DBHandler(getActivity());
@@ -65,6 +45,8 @@ public class ExpenseListFragment extends Fragment {
         items.addAll(transactions);
         
         //Collections.sort(items);
+        
+        handler.closeDB(); 
         
         mAdapter = new TransactionListArrayAdapter(getActivity(), this, items);
         listView.setAdapter(mAdapter);

@@ -90,22 +90,13 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 	private static final String INITIALIZE_CATEGORIES = "INSERT INTO "
 			+ TABLE_CATEGORY + " ("
 			+ KEY_CATEGORY_NAME + ") VALUES ("
-			+ "'Food' );"
-			+ "INSERT INTO "
-			+ TABLE_CATEGORY + " ("
-			+ KEY_CATEGORY_NAME + ") VALUES ("
-			+ "'Shopping' );";
+			+ "'Food' ), ( 'Shopping');";
 	
 	
-	
-	private static final String INITIALIZE_ACCOUNT_CATEGORIES = "INSERT INTO "
+	private static final String INITIALIZE_ACCOUNT_KINDS = "INSERT INTO "
 			+ TABLE_ACCOUNT_KIND + " ("
 			+ KEY_ACCOUNT_NAME + ") VALUES ("
-			+ "'Cash' );"
-			+ "INSERT INTO "
-			+ TABLE_CATEGORY + " ("
-			+ KEY_CATEGORY_NAME + ") VALUES ("
-			+ "'Account' );";	
+			+ "'Cash' ), ('Account');";
 	
 	public DBHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -120,7 +111,7 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 		
 		//Initialize master db
 		db.execSQL(INITIALIZE_CATEGORIES);
-		db.execSQL(INITIALIZE_ACCOUNT_CATEGORIES);
+		db.execSQL(INITIALIZE_ACCOUNT_KINDS);
 		
 	}
 

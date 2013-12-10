@@ -13,15 +13,41 @@
         android:hint="Amount"
         android:inputType="number" />
 
+    <!-- Category Spinner -->
 
-    <Button
-        android:id="@+id/datepicker"
+
+    <Spinner
+        android:id="@+id/categories"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/edit_amount"
-        android:layout_marginTop="20dp"
-        style="?android:attr/spinnerStyle" />
-    
+        android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
+        android:layout_marginTop="20dip"
+        android:prompt="@string/category_title" />
+
+    <!-- Accounts Spinner -->
+
+    <Spinner
+        android:id="@+id/accounts"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/categories"
+        android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
+        android:layout_marginTop="20dip"
+        android:prompt="@string/account_title" />
+
+
+    <Button
+        android:id="@+id/datepicker"
+        style="?android:attr/spinnerStyle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/accounts"
+        android:layout_marginTop="20dp" />
+
+
     <EditText
         android:id="@+id/edit_details"
         android:layout_width="fill_parent"
@@ -29,43 +55,6 @@
         android:layout_below="@+id/datepicker"
         android:layout_marginTop="20dp"
         android:hint="Details" />
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_details"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" >
-
-        <TextView
-            android:id="@+id/radiotext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:paddingRight="20dp"
-            android:text="Account type:"
-            android:textSize="16sp" />
-
-        <RadioGroup
-            android:id="@+id/edit_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/radiotext" >
-
-            <RadioButton
-                android:id="@+id/cash"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Cash" />
-
-            <RadioButton
-                android:id="@+id/account"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Account" />
-        </RadioGroup>
-    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
