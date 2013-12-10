@@ -13,18 +13,21 @@
         android:hint="Amount"
         android:inputType="number" />
 
-    <DatePicker
-        android:id="@+id/edit_date"
-        android:layout_width="fill_parent"
-        android:layout_height="150dip"
-        android:layout_below="@+id/edit_amount"
-        android:layout_marginTop="20dp" />
 
+    <Button
+        android:id="@+id/datepicker"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_amount"
+        android:layout_marginTop="20dp"
+        android:text="Pick Date"
+        style="?android:attr/spinnerStyle" />
+    
     <EditText
         android:id="@+id/edit_details"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_date"
+        android:layout_below="@+id/datepicker"
         android:layout_marginTop="20dp"
         android:hint="Details" />
 
