@@ -1,8 +1,8 @@
 package com.hacknight.expensebot.model;
 
 public class AccountKind {
-	int id;
-	String accountKindName;
+	private int id;
+	private String accountKindName;
 	
 	public AccountKind() {
 		
