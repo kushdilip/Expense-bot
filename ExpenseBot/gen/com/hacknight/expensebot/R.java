@@ -8,6 +8,15 @@
 package com.hacknight.expensebot;
 
 public final class R {
+    public static final class array {
+        /**  Nav Drawer List Item Icons 
+ Keep them in order as the titles are in 
+         */
+        public static final int nav_drawer_icons=0x7f0b0001;
+        /**  Nav Drawer Menu Items 
+         */
+        public static final int nav_drawer_items=0x7f0b0000;
+    }
     public static final class attr {
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
@@ -313,6 +322,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int default_title_indicator_selected_color=0x7f05000e;
         public static final int default_title_indicator_text_color=0x7f05000f;
         public static final int default_underline_indicator_selected_color=0x7f050010;
+        public static final int myColor=0x7f050011;
         public static final int vpi__background_holo_dark=0x7f050000;
         public static final int vpi__background_holo_light=0x7f050001;
         public static final int vpi__bright_foreground_disabled_holo_dark=0x7f050004;
@@ -321,8 +331,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int vpi__bright_foreground_holo_light=0x7f050003;
         public static final int vpi__bright_foreground_inverse_holo_dark=0x7f050006;
         public static final int vpi__bright_foreground_inverse_holo_light=0x7f050007;
-        public static final int vpi__dark_theme=0x7f050011;
-        public static final int vpi__light_theme=0x7f050012;
+        public static final int vpi__dark_theme=0x7f050012;
+        public static final int vpi__light_theme=0x7f050013;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -348,41 +358,50 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int default_title_indicator_top_padding=0x7f08000c;
     }
     public static final class drawable {
-        public static final int decrease=0x7f020000;
-        public static final int ic_action_edit=0x7f020001;
-        public static final int ic_add=0x7f020002;
-        public static final int ic_edit=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int increase=0x7f020005;
-        public static final int vpi__tab_indicator=0x7f020006;
-        public static final int vpi__tab_selected_focused_holo=0x7f020007;
-        public static final int vpi__tab_selected_holo=0x7f020008;
-        public static final int vpi__tab_selected_pressed_holo=0x7f020009;
-        public static final int vpi__tab_unselected_focused_holo=0x7f02000a;
-        public static final int vpi__tab_unselected_holo=0x7f02000b;
-        public static final int vpi__tab_unselected_pressed_holo=0x7f02000c;
+        public static final int counter_bg=0x7f020000;
+        public static final int decrease=0x7f020001;
+        public static final int ic_action_edit=0x7f020002;
+        public static final int ic_add=0x7f020003;
+        public static final int ic_drawer=0x7f020004;
+        public static final int ic_edit=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int increase=0x7f020007;
+        public static final int list_item_bg_normal=0x7f020008;
+        public static final int list_item_bg_pressed=0x7f020009;
+        public static final int list_selector=0x7f02000a;
+        public static final int vpi__tab_indicator=0x7f02000b;
+        public static final int vpi__tab_selected_focused_holo=0x7f02000c;
+        public static final int vpi__tab_selected_holo=0x7f02000d;
+        public static final int vpi__tab_selected_pressed_holo=0x7f02000e;
+        public static final int vpi__tab_unselected_focused_holo=0x7f02000f;
+        public static final int vpi__tab_unselected_holo=0x7f020010;
+        public static final int vpi__tab_unselected_pressed_holo=0x7f020011;
     }
     public static final class id {
-        public static final int accounts=0x7f04000d;
-        public static final int action_add=0x7f040014;
-        public static final int action_settings=0x7f040015;
-        public static final int amount=0x7f040008;
+        public static final int accounts=0x7f040011;
+        public static final int action_add=0x7f040018;
+        public static final int action_settings=0x7f040019;
+        public static final int amount=0x7f04000c;
         public static final int bottom=0x7f040003;
-        public static final int cancel_button=0x7f040011;
-        public static final int categories=0x7f04000c;
-        public static final int date=0x7f040009;
-        public static final int datepicker=0x7f04000e;
-        public static final int edit_amount=0x7f04000b;
-        public static final int edit_details=0x7f04000f;
-        public static final int edit_img=0x7f04000a;
-        public static final int icon=0x7f040007;
-        public static final int indicator=0x7f040005;
-        public static final int listview=0x7f040013;
+        public static final int cancel_button=0x7f040015;
+        public static final int categories=0x7f040010;
+        public static final int counter=0x7f04000b;
+        public static final int date=0x7f04000d;
+        public static final int datepicker=0x7f040012;
+        public static final int drawer_layout=0x7f040006;
+        public static final int edit_amount=0x7f04000f;
+        public static final int edit_details=0x7f040013;
+        public static final int edit_img=0x7f04000e;
+        public static final int frame_container=0x7f040007;
+        public static final int icon=0x7f040009;
+        public static final int list_slidermenu=0x7f040008;
+        public static final int listview=0x7f040017;
         public static final int none=0x7f040000;
-        public static final int ok_button=0x7f040010;
-        public static final int pager=0x7f040006;
+        public static final int ok_button=0x7f040014;
+        public static final int pager=0x7f040005;
+        public static final int title=0x7f04000a;
         public static final int top=0x7f040004;
-        public static final int totalTransactions=0x7f040012;
+        public static final int totalTransactions=0x7f040016;
         public static final int triangle=0x7f040001;
         public static final int underline=0x7f040002;
     }
@@ -395,20 +414,27 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int list_item=0x7f030001;
-        public static final int new_transaction=0x7f030002;
-        public static final int new_transfer=0x7f030003;
-        public static final int summary_layout=0x7f030004;
-        public static final int transaction_list_layout=0x7f030005;
+        public static final int activity_slide=0x7f030001;
+        public static final int drawer_list_item=0x7f030002;
+        public static final int list_item=0x7f030003;
+        public static final int new_transaction=0x7f030004;
+        public static final int new_transfer=0x7f030005;
+        public static final int summary_layout=0x7f030006;
+        public static final int transaction_list_layout=0x7f030007;
     }
     public static final class menu {
-        public static final int main=0x7f0b0000;
+        public static final int main=0x7f0c0000;
     }
     public static final class string {
         public static final int account_title=0x7f0a0004;
         public static final int action_settings=0x7f0a0001;
         public static final int app_name=0x7f0a0000;
         public static final int category_title=0x7f0a0003;
+        /**  Content Description 
+         */
+        public static final int desc_list_item_icon=0x7f0a0007;
+        public static final int drawer_close=0x7f0a0006;
+        public static final int drawer_open=0x7f0a0005;
         public static final int hello_world=0x7f0a0002;
     }
     public static final class style {

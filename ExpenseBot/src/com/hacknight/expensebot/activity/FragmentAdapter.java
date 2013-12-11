@@ -2,24 +2,24 @@ package com.hacknight.expensebot.activity;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.View;
 
 import com.viewpagerindicator.IconPagerAdapter;
 
-public class FragmentAdapter extends FragmentStatePagerAdapter implements
-		IconPagerAdapter {
+public class FragmentAdapter extends FragmentPagerAdapter{
 
 	public FragmentAdapter(FragmentManager fm) {
 		super(fm);
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public int getIconResId(int index) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+//	@Override
+//	public int getIconResId(int index) {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 
 	@Override
 	public Fragment getItem(int position) {

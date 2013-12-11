@@ -1,5 +1,8 @@
 package com.hacknight.expensebot.activity;
 
+import android.app.ActionBar;
+import android.app.ActionBar.Tab;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -10,17 +13,20 @@ import android.widget.EditText;
 
 import com.hacknight.expensebot.R;
 import com.viewpagerindicator.PageIndicator;
-import com.viewpagerindicator.TitlePageIndicator;
 
-public class MainActivity extends FragmentActivity {
-	
+public class MainActivity extends FragmentActivity implements
+		ActionBar.TabListener {
+
 	ExpenseSummaryFragment eFragment;
 	FragmentAdapter mAdapter;
 	ViewPager mPager;
+	private ActionBar actionBar;
+	private String[] tabs = { "Summary", "Transactions" };
+
 	PageIndicator mIndicator;
 	int Number = 0;
 	EditText countText;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -30,16 +36,43 @@ public class MainActivity extends FragmentActivity {
 
 		mPager = (ViewPager) findViewById(R.id.pager);
 		mPager.setAdapter(mAdapter);
+		
 
-		mIndicator = (TitlePageIndicator) findViewById(R.id.indicator);
-		mIndicator.setViewPager(mPager);
-	
+//		mIndicator = (TitlePageIndicator) findViewById(R.id.indicator);
+//		mIndicator.setViewPager(mPager);
+
+		//Action bar settings
+		actionBar = getActionBar();
+		actionBar.setHomeButtonEnabled(false);
+		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
-		
-		
-//		NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-//		notificationManager.cancel(1);		
-		
+		 // Adding Tabs
+        for (String tab_name : tabs) {
+            actionBar.addTab(actionBar.newTab().setText(tab_name)
+                    .setTabListener(this));
+        }
+
+        mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        	 
+            @Override
+            public void onPageSelected(int position) {
+                // on changing the page
+                // make respected tab selected
+                actionBar.setSelectedNavigationItem(position);
+            }
+         
+            @Override
+            public void onPageScrolled(int arg0, float arg1, int arg2) {
+            }
+         
+            @Override
+            public void onPageScrollStateChanged(int arg0) {
+            }
+        });
+		// NotificationManager notificationManager = (NotificationManager)
+		// getSystemService(Context.NOTIFICATION_SERVICE);
+		// notificationManager.cancel(1);
+
 	}
 
 	@Override
@@ -49,21 +82,38 @@ public class MainActivity extends FragmentActivity {
 		return true;
 	}
 
-
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle presses on the action bar items
-	    switch (item.getItemId()) {
-	        case R.id.action_add:
-	            Intent i = new Intent(this, EditEntryActivity.class);
-	            //i.putExtra("new", "");
-	            this.startActivity(i);
-	            return true;
-	        case R.id.action_settings:
-	            return true;
-	        default:
-	            return super.onOptionsItemSelected(item);
-	    }
+		// Handle presses on the action bar items
+		switch (item.getItemId()) {
+		case R.id.action_add:
+			Intent i = new Intent(this, EditEntryActivity.class);
+			// i.putExtra("new", "");
+			this.startActivity(i);
+			return true;
+		case R.id.action_settings:
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
+	}
+
+	@Override
+	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onTabSelected(Tab tab, FragmentTransaction arg1) {
+		// TODO Auto-generated method stub
+		mPager.setCurrentItem(tab.getPosition());
+	}
+
+	@Override
+	public void onTabUnselected(Tab arg0, FragmentTransaction arg1) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
