@@ -1,4 +1,4 @@
-package com.hacknight.expensebot.model;
+package com.hacknight.expensebot.slidingmenu;
 
 public class NavDrawerItem {
 
