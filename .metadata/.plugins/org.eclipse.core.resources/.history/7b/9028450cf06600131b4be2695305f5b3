@@ -1,0 +1,7 @@
+package com.hacknight.expensebot.slidingmenu;
+
+import android.app.Fragment;
+
+public class HomeFragment extends Fragment {
+
+}

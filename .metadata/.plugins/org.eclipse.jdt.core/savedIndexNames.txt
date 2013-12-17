@@ -1,0 +1,6 @@
+INDEX VERSION 1.126+C:\Users\dk\Desktop\Expensebot\.metadata\.plugins\org.eclipse.jdt.core
+2653914711.index
+938709367.index
+165702499.index
+2797282610.index
+1828176730.index

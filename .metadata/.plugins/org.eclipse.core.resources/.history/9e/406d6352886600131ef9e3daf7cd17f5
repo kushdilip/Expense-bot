@@ -1,0 +1,45 @@
+package com.hacknight.expensebot.slidingmenu;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.content.res.TypedArray;
+import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
+import android.widget.ListView;
+
+import com.hacknight.expensebot.R;
+
+public class MainActivity extends Activity {
+	private DrawerLayout mDrawerLayout;
+	private ListView mDrawerList;
+	private ActionBarDrawerToggle mDrawerToggle;
+	
+	//nav drawer title
+	private CharSequence mDrawerTitle;
+
+	// used to store app title
+	private CharSequence mTitle;
+	
+	//slide menu title
+	private String[] navMenuTitles;
+	private TypedArray navMenuIcons;
+	
+	private ArrayList<NavDrawerItem> navDrawerItems;
+	private NavDrawerListAdapter adapter;
+	
+	@Override
+	    protected void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        setContentView(R.layout.activity_slide);
+	        
+	        mTitle = mDrawerTitle = getTitle();
+	        
+	        //load slide menu items
+	        navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+	        
+	    
+	 }
+	
+}

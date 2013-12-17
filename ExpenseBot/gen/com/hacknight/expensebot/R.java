@@ -313,6 +313,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int default_underline_indicator_fades=0x7f060004;
     }
     public static final class color {
+        public static final int counter_text_bg=0x7f050015;
+        public static final int counter_text_color=0x7f050016;
         public static final int default_circle_indicator_fill_color=0x7f050008;
         public static final int default_circle_indicator_page_color=0x7f050009;
         public static final int default_circle_indicator_stroke_color=0x7f05000a;
@@ -322,7 +324,11 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int default_title_indicator_selected_color=0x7f05000e;
         public static final int default_title_indicator_text_color=0x7f05000f;
         public static final int default_underline_indicator_selected_color=0x7f050010;
-        public static final int myColor=0x7f050011;
+        public static final int list_background=0x7f050012;
+        public static final int list_background_pressed=0x7f050013;
+        public static final int list_divider=0x7f050014;
+        public static final int list_item_title=0x7f050011;
+        public static final int myColor=0x7f050017;
         public static final int vpi__background_holo_dark=0x7f050000;
         public static final int vpi__background_holo_light=0x7f050001;
         public static final int vpi__bright_foreground_disabled_holo_dark=0x7f050004;
@@ -331,8 +337,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int vpi__bright_foreground_holo_light=0x7f050003;
         public static final int vpi__bright_foreground_inverse_holo_dark=0x7f050006;
         public static final int vpi__bright_foreground_inverse_holo_light=0x7f050007;
-        public static final int vpi__dark_theme=0x7f050012;
-        public static final int vpi__light_theme=0x7f050013;
+        public static final int vpi__dark_theme=0x7f050018;
+        public static final int vpi__light_theme=0x7f050019;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -378,31 +384,32 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int vpi__tab_unselected_pressed_holo=0x7f020011;
     }
     public static final class id {
-        public static final int accounts=0x7f040011;
-        public static final int action_add=0x7f040018;
-        public static final int action_settings=0x7f040019;
-        public static final int amount=0x7f04000c;
+        public static final int accounts=0x7f040012;
+        public static final int action_add=0x7f040019;
+        public static final int action_settings=0x7f04001a;
+        public static final int amount=0x7f04000d;
         public static final int bottom=0x7f040003;
-        public static final int cancel_button=0x7f040015;
-        public static final int categories=0x7f040010;
+        public static final int cancel_button=0x7f040016;
+        public static final int categories=0x7f040011;
         public static final int counter=0x7f04000b;
-        public static final int date=0x7f04000d;
-        public static final int datepicker=0x7f040012;
+        public static final int date=0x7f04000e;
+        public static final int datepicker=0x7f040013;
         public static final int drawer_layout=0x7f040006;
-        public static final int edit_amount=0x7f04000f;
-        public static final int edit_details=0x7f040013;
-        public static final int edit_img=0x7f04000e;
+        public static final int edit_amount=0x7f040010;
+        public static final int edit_details=0x7f040014;
+        public static final int edit_img=0x7f04000f;
         public static final int frame_container=0x7f040007;
         public static final int icon=0x7f040009;
         public static final int list_slidermenu=0x7f040008;
-        public static final int listview=0x7f040017;
+        public static final int listview=0x7f040018;
         public static final int none=0x7f040000;
-        public static final int ok_button=0x7f040014;
+        public static final int ok_button=0x7f040015;
         public static final int pager=0x7f040005;
         public static final int title=0x7f04000a;
         public static final int top=0x7f040004;
-        public static final int totalTransactions=0x7f040016;
+        public static final int totalTransactions=0x7f040017;
         public static final int triangle=0x7f040001;
+        public static final int txtLabel=0x7f04000c;
         public static final int underline=0x7f040002;
     }
     public static final class integer {
@@ -416,11 +423,17 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int activity_main=0x7f030000;
         public static final int activity_slide=0x7f030001;
         public static final int drawer_list_item=0x7f030002;
-        public static final int list_item=0x7f030003;
-        public static final int new_transaction=0x7f030004;
-        public static final int new_transfer=0x7f030005;
-        public static final int summary_layout=0x7f030006;
-        public static final int transaction_list_layout=0x7f030007;
+        public static final int fragment_community=0x7f030003;
+        public static final int fragment_find_people=0x7f030004;
+        public static final int fragment_home=0x7f030005;
+        public static final int fragment_pages=0x7f030006;
+        public static final int fragment_photos=0x7f030007;
+        public static final int fragment_whats_hot=0x7f030008;
+        public static final int list_item=0x7f030009;
+        public static final int new_transaction=0x7f03000a;
+        public static final int new_transfer=0x7f03000b;
+        public static final int summary_layout=0x7f03000c;
+        public static final int transaction_list_layout=0x7f03000d;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;

@@ -22,7 +22,7 @@
         android:layout_toRightOf="@id/icon"
         android:minHeight="?android:attr/listPreferredItemHeightSmall"
         android:textAppearance="?android:attr/textAppearanceListItemSmall"
-        android:textColor="@color/vpi__background_holo_light"
+        android:textColor="@color/list_item_title"
         android:gravity="center_vertical"
         android:paddingRight="40dp"/>
      
@@ -33,7 +33,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="8dp"
-        android:textColor="@color/vpi__background_holo_light"/>
+        android:textColor="@color/counter_text_color"/>
  
     
     
