@@ -57,6 +57,8 @@ public class MainActivity extends Activity {
 	        
 	        navDrawerItems = new ArrayList<NavDrawerItem>();
 	        
+	        
+	        
 	     // adding nav drawer items to array
 			// Home
 			navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));

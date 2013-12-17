@@ -1,9 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.hacknight.expensebot.R.array"/>
 <fullyQualifiedTypeName name="android.support.v4.widget.DrawerLayout"/>
+<fullyQualifiedTypeName name="android.widget.ListView"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.hacknight.expensebot.slidingmenu.NavDrawerItem"/>
 <fullyQualifiedTypeName name="com.hacknight.expensebot.slidingmenu.NavDrawerListAdapter"/>
+<fullyQualifiedTypeName name="android.support.v4.app.ActionBarDrawerToggle"/>
+<fullyQualifiedTypeName name="com.hacknight.expensebot.R.drawable"/>
+<fullyQualifiedTypeName name="com.hacknight.expensebot.R.string"/>
+<fullyQualifiedTypeName name="android.view.Menu"/>
+<fullyQualifiedTypeName name="com.hacknight.expensebot.R.menu"/>
+<fullyQualifiedTypeName name="android.view.MenuItem"/>
+<fullyQualifiedTypeName name="java.lang.Override"/>
+<fullyQualifiedTypeName name="android.R.bool"/>
+<fullyQualifiedTypeName name="android.R"/>
+<fullyQualifiedTypeName name="android.R.layout"/>
+<fullyQualifiedTypeName name="com.hacknight.expensebot.R"/>
+<fullyQualifiedTypeName name="info.androidhive.slidingmenu.MainActivity.SlideMenuClickListener"/>
+<fullyQualifiedTypeName name="com.hacknight.expensebot.slidingmenu.HomeFragment"/>
+<fullyQualifiedTypeName name="android.app.FragmentManager"/>
 <fullyQualifiedTypeName name="com.hacknight.expensebot.R.id"/>
-<fullyQualifiedTypeName name="com.hacknight.expensebot.R.array"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="com.hacknight.expensebot.activity.MainActivity"/>
+<fullyQualifiedTypeName name="android.view.View"/>
+<fullyQualifiedTypeName name="android.app.ActionBar"/>
+<fullyQualifiedTypeName name="android.app.ActionBar.TabListener"/>
+<fullyQualifiedTypeName name="android.support.v4.view.ViewPager"/>
+<fullyQualifiedTypeName name="com.hacknight.expensebot.activity.FragmentAdapter"/>
+<fullyQualifiedTypeName name="android.support.v4.app.FragmentActivity"/>
+<fullyQualifiedTypeName name="android.R.anim"/>
+<fullyQualifiedTypeName name="android.support.v7.app.ActionBar"/>
+<fullyQualifiedTypeName name="com.actionbarsherlock.ActionBarSherlock"/>
+<fullyQualifiedTypeName name="com.actionbarsherlock.app.SherlockFragmentActivity"/>
 </qualifiedTypeNameHistroy>
