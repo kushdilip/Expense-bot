@@ -1,0 +1,7 @@
+package com.hacknight.expensebot.vp_slidingmenu;
+
+import android.app.ListFragment;
+
+public class SampleListFragment extends ListFragment {
+	
+}

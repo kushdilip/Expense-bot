@@ -172,10 +172,10 @@ public final class R {
 		public static final int abs__bright_foreground_disabled_holo_light = 0x7f060005;
 		public static final int abs__bright_foreground_holo_dark = 0x7f060002;
 		public static final int abs__bright_foreground_holo_light = 0x7f060003;
-		public static final int abs__primary_text_disable_only_holo_dark = 0x7f06001e;
-		public static final int abs__primary_text_disable_only_holo_light = 0x7f06001f;
-		public static final int abs__primary_text_holo_dark = 0x7f060020;
-		public static final int abs__primary_text_holo_light = 0x7f060021;
+		public static final int abs__primary_text_disable_only_holo_dark = 0x7f060023;
+		public static final int abs__primary_text_disable_only_holo_light = 0x7f060024;
+		public static final int abs__primary_text_holo_dark = 0x7f060025;
+		public static final int abs__primary_text_holo_light = 0x7f060026;
 		public static final int default_circle_indicator_fill_color = 0x7f06000e;
 		public static final int default_circle_indicator_page_color = 0x7f06000f;
 		public static final int default_circle_indicator_stroke_color = 0x7f060010;
@@ -193,8 +193,8 @@ public final class R {
 		public static final int vpi__bright_foreground_holo_light = 0x7f060009;
 		public static final int vpi__bright_foreground_inverse_holo_dark = 0x7f06000c;
 		public static final int vpi__bright_foreground_inverse_holo_light = 0x7f06000d;
-		public static final int vpi__dark_theme = 0x7f060022;
-		public static final int vpi__light_theme = 0x7f060023;
+		public static final int vpi__dark_theme = 0x7f060027;
+		public static final int vpi__light_theme = 0x7f060028;
 	}
 	public static final class dimen {
 		public static final int abs__action_bar_default_height = 0x7f070001;
@@ -339,13 +339,13 @@ public final class R {
 		public static final int abs__textfield_searchview_right_holo_dark = 0x7f02006d;
 		public static final int abs__textfield_searchview_right_holo_light = 0x7f02006e;
 		public static final int abs__toast_frame = 0x7f02006f;
-		public static final int vpi__tab_indicator = 0x7f02007b;
-		public static final int vpi__tab_selected_focused_holo = 0x7f02007c;
-		public static final int vpi__tab_selected_holo = 0x7f02007d;
-		public static final int vpi__tab_selected_pressed_holo = 0x7f02007e;
-		public static final int vpi__tab_unselected_focused_holo = 0x7f02007f;
-		public static final int vpi__tab_unselected_holo = 0x7f020080;
-		public static final int vpi__tab_unselected_pressed_holo = 0x7f020081;
+		public static final int vpi__tab_indicator = 0x7f02007c;
+		public static final int vpi__tab_selected_focused_holo = 0x7f02007d;
+		public static final int vpi__tab_selected_holo = 0x7f02007e;
+		public static final int vpi__tab_selected_pressed_holo = 0x7f02007f;
+		public static final int vpi__tab_unselected_focused_holo = 0x7f020080;
+		public static final int vpi__tab_unselected_holo = 0x7f020081;
+		public static final int vpi__tab_unselected_pressed_holo = 0x7f020082;
 	}
 	public static final class id {
 		public static final int abs__action_bar = 0x7f04002a;
@@ -402,7 +402,7 @@ public final class R {
 		public static final int showCustom = 0x7f040008;
 		public static final int showHome = 0x7f040005;
 		public static final int showTitle = 0x7f040007;
-		public static final int slidingmenumain = 0x7f04004e;
+		public static final int slidingmenumain = 0x7f040051;
 		public static final int tabMode = 0x7f040003;
 		public static final int top = 0x7f040019;
 		public static final int triangle = 0x7f040016;
@@ -440,9 +440,9 @@ public final class R {
 		public static final int abs__search_dropdown_item_icons_2line = 0x7f030012;
 		public static final int abs__search_view = 0x7f030013;
 		public static final int abs__simple_dropdown_hint = 0x7f030014;
-		public static final int sherlock_spinner_dropdown_item = 0x7f030021;
-		public static final int sherlock_spinner_item = 0x7f030022;
-		public static final int slidingmenumain = 0x7f030023;
+		public static final int sherlock_spinner_dropdown_item = 0x7f030024;
+		public static final int sherlock_spinner_item = 0x7f030025;
+		public static final int slidingmenumain = 0x7f030026;
 	}
 	public static final class string {
 		public static final int abs__action_bar_home_description = 0x7f090000;

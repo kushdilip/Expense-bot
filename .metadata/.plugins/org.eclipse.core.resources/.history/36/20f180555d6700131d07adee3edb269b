@@ -1,0 +1,12 @@
+package com.hacknight.expensebot.vp_slidingmenu;
+
+import com.hacknight.expensebot.R;
+
+public class ViewPagerActivity extends BaseActivity {
+
+	public ViewPagerActivity() {
+		super(R.string.viewpager);
+		// TODO Auto-generated constructor stub
+	}
+
+}

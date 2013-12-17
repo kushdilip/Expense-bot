@@ -1,0 +1,26 @@
+package com.hacknight.expensebot.vp_slidingmenu;
+
+import android.os.Bundle;
+import android.support.v4.view.ViewPager;
+
+import com.hacknight.expensebot.R;
+
+public class ViewPagerActivity extends BaseActivity {
+
+	public ViewPagerActivity() {
+		super(R.string.viewpager);
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		
+		ViewPager vp = new ViewPager(this);
+		vp.setId("VP".hashCode());
+//		vp.setAdapter()
+	}
+	
+	
+
+}
