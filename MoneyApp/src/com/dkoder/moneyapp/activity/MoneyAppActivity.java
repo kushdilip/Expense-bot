@@ -2,13 +2,15 @@ package com.dkoder.moneyapp.activity;
 
 import java.util.ArrayList;
 
-import android.app.Fragment;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -161,11 +163,33 @@ public class MoneyAppActivity extends FragmentActivity {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
 		switch (position) {
-
-		default:
-				break;
+		case 0:
+			fragment = new HomeFragment();
+			break;
+		case 2:
+			fragment = new HelpFragment();
+			break;
 		}
 		
+		if (fragment != null) {
+			FragmentManager fragmentManager = getSupportFragmentManager();
+			fragmentManager.beginTransaction()
+			.replace(R.id.frame_container, fragment).commit();
+			
+			//update selected item and title, then close the drawer
+//			mDrawerList.setItemChecked(position, true);
+//			mDrawerList.setSelection(position);
+//			setTitle(navMenuTitles[position]);
+//			mDrawerLayout.closeDrawer(mDrawerList);
+		} else {
+			Log.e("MoneyAppActivity", "Error in creating fragment");
+		}
+
+		//Moved out from if condition
+		mDrawerList.setItemChecked(position, true);
+		mDrawerList.setSelection(position);
+		setTitle(navMenuTitles[position]);
+		mDrawerLayout.closeDrawer(mDrawerList);
 	}
 
 	
