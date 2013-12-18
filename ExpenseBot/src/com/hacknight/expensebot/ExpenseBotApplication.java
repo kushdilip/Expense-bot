@@ -5,8 +5,6 @@ import android.support.v4.app.FragmentManager;
 
 public class ExpenseBotApplication extends Application {
 
-	public static FragmentManager fragmentManager;
-	
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
