@@ -31,10 +31,21 @@
     </array>
 
     <string name="viewpager">ViewPager</string>
+    <string name="changing_fragments">Changing Fragments</string>
 
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
 
     <color name="myColor">#ffffff</color>
 
+    
+    
+    <string-array name="color_names">
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>White</item>
+        <item>Black</item>
+    </string-array>
+    
 </resources>

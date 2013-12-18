@@ -1,0 +1,20 @@
+package com.hacknight.expensebot.vp_slidingmenu;
+
+import android.os.Bundle;
+
+import com.hacknight.expensebot.R;
+
+public class FragmentChangeActivity extends BaseActivity {
+
+	public FragmentChangeActivity(int titleRes) {
+		super(R.string.changing_fragments);
+	}
+
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+	}
+
+	
+}

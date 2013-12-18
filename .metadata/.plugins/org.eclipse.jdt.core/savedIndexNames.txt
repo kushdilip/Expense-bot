@@ -2,7 +2,6 @@ INDEX VERSION 1.126+C:\Users\dk\Desktop\Expensebot\.metadata\.plugins\org.eclips
 1485167375.index
 3199492014.index
 868449688.index
-426952979.index
 1122178717.index
 1298612766.index
 2797282610.index

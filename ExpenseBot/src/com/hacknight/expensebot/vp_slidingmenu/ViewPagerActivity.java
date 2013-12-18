@@ -12,7 +12,7 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import com.hacknight.expensebot.R;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
-public class ViewPagerActivity extends BaseActivity {
+public class ViewPagerActivity extends BaseActivity implements OnPageChangeListener {
 
 	public ViewPagerActivity() {
 		super(R.string.viewpager);
@@ -28,33 +28,7 @@ public class ViewPagerActivity extends BaseActivity {
 		vp.setAdapter(new ColorPagerAdapter(getSupportFragmentManager()));
 		setContentView(vp);
 		
-		vp.setOnPageChangeListener(new OnPageChangeListener() {
-			
-			@Override
-			public void onPageSelected(int arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onPageScrolled(int arg0, float arg1, int arg2) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onPageScrollStateChanged(int position) {
-				// TODO Auto-generated method stub
-				switch (position) {
-				case 0:
-					getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
-					break;
-				default:
-					getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
-					break;
-				}
-			}
-		});
+		vp.setOnPageChangeListener(this);
 		
 		vp.setCurrentItem(0);
 		getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
@@ -92,6 +66,23 @@ public class ViewPagerActivity extends BaseActivity {
 			return mFragments.size();
 		}
 	}
-	
 
+
+	@Override
+	public void onPageScrollStateChanged(int position) {
+		switch (position) {
+		case 0:
+			getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+			break;
+		default:
+			getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
+			break;
+		}
+	}
+
+	@Override
+	public void onPageScrolled(int arg0, float arg1, int arg2) {}
+
+	@Override
+	public void onPageSelected(int arg0) {}
 }

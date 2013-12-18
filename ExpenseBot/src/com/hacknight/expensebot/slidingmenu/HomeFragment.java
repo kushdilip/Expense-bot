@@ -1,10 +1,9 @@
 package com.hacknight.expensebot.slidingmenu;
 
-import android.app.ActionBar;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.app.ActionBar.Tab;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,56 +14,41 @@ import com.hacknight.expensebot.activity.FragmentAdapter;
 
 public class HomeFragment extends Fragment {
 
-	View rootView;
-	
-	public HomeFragment(){}
-	
+	View mView;
+	ViewPager mViewPager;
+	FragmentAdapter mAdapter;
+
+	public HomeFragment() {
+	}
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
-		rootView = inflater.inflate(R.layout.fragment_home, container, false);
-		
-		getActivity().setTitle("New tabbel layout inside Fragment :-)");
-		
-		
-		
-		
-		ActionBar.TabListener tabListener = new ActionBar.TabListener() {
-			
-			@Override
-			public void onTabUnselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onTabSelected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
-//				mPager.setCurrentItem(tab.getPosition());
+		// getActivity().getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-			}
-			
-			@Override
-			public void onTabReselected(Tab tab, FragmentTransaction ft) {
-				// TODO Auto-generated method stub
-				
-			}
-		};
+		// rootView = inflater.inflate(R.layout.fragment_home, container,
+		// false);
+
+		mView = inflater.inflate(R.layout.activity_main, container, false);
+
+		mAdapter = new FragmentAdapter((FragmentActivity)getActivity());
 		
-		// Add 3 tabs, specifying the tab's text and TabListener
-		for (int i1 = 0; i1 < 3; i1++) {
-		    getActivity().getActionBar().addTab(
-		            getActivity().getActionBar().newTab()
-		            .setText("Tab " + (i1 + 1))
-		            .setTabListener(tabListener));
-		}
+		mViewPager = (ViewPager) mView.findViewById(R.id.pager);
+		mViewPager.setAdapter(mAdapter);
+
+		new setAdapterTask().execute();
 		
-		return rootView;
+		return mView;
 	}
-	
-	
-	
+
+	private class setAdapterTask extends AsyncTask<Void, Void, Void> {
+		protected Void doInBackground(Void... params) {
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			mViewPager.setAdapter(mAdapter);
+		}
+	}
 }

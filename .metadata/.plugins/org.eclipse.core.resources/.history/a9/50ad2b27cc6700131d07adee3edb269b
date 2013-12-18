@@ -1,0 +1,5 @@
+package com.hacknight.expensebot.vp_slidingmenu;
+
+public class ViewPagerFragment {
+
+}

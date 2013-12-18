@@ -5920,3 +5920,56 @@ Java Model Exception: Java Model Status [Timed out while retrieving the attached
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 !SUBENTRY 1 org.eclipse.jdt.core 4 1012 2013-12-18 02:29:07.420
 !MESSAGE Timed out while retrieving the attached javadoc for ArrayList [in ArrayList.class [in java.util [in D:\Development\adt-bundle-windows-x86-20130917\adt-bundle-windows-x86-20130917\sdk\platforms\android-18\android.jar]]] 
+
+!ENTRY com.android.ide.eclipse.adt 4 0 2013-12-18 15:42:13.687
+!MESSAGE Failed converting ECJ parse tree to Lombok for file C:\Users\dk\Desktop\Expensebot\ExpenseBot\src\com\hacknight\expensebot\vp_slidingmenu\ViewPagerFragment.java
+!STACK 0
+java.lang.NullPointerException: returnTypeReference is mandatory
+	at lombok.ast.MethodDeclaration.astReturnTypeReference(MethodDeclaration.java:75)
+	at lombok.ast.ecj.EcjTreeConverter$2.visitMethodDeclaration(EcjTreeConverter.java:1231)
+	at lombok.ast.ecj.EcjTreeVisitor.visitEcjNode(EcjTreeVisitor.java:152)
+	at lombok.ast.ecj.EcjTreeConverter.visit(EcjTreeConverter.java:290)
+	at lombok.ast.ecj.EcjTreeConverter.toTree(EcjTreeConverter.java:231)
+	at lombok.ast.ecj.EcjTreeConverter.fillList(EcjTreeConverter.java:277)
+	at lombok.ast.ecj.EcjTreeConverter.fillList(EcjTreeConverter.java:247)
+	at lombok.ast.ecj.EcjTreeConverter.access$100(EcjTreeConverter.java:140)
+	at lombok.ast.ecj.EcjTreeConverter$2.createNormalTypeBody(EcjTreeConverter.java:557)
+	at lombok.ast.ecj.EcjTreeConverter$2.visitTypeDeclaration(EcjTreeConverter.java:480)
+	at lombok.ast.ecj.EcjTreeVisitor.visitEcjNode(EcjTreeVisitor.java:48)
+	at lombok.ast.ecj.EcjTreeConverter.visit(EcjTreeConverter.java:290)
+	at lombok.ast.ecj.EcjTreeConverter.toTree(EcjTreeConverter.java:231)
+	at lombok.ast.ecj.EcjTreeConverter.fillList(EcjTreeConverter.java:277)
+	at lombok.ast.ecj.EcjTreeConverter.fillList(EcjTreeConverter.java:247)
+	at lombok.ast.ecj.EcjTreeConverter.access$100(EcjTreeConverter.java:140)
+	at lombok.ast.ecj.EcjTreeConverter$2.visitCompilationUnitDeclaration(EcjTreeConverter.java:435)
+	at lombok.ast.ecj.EcjTreeVisitor.visitEcjNode(EcjTreeVisitor.java:264)
+	at lombok.ast.ecj.EcjTreeConverter.visit(EcjTreeConverter.java:290)
+	at com.android.ide.eclipse.adt.internal.lint.EclipseLintClient$EclipseJavaParser.parseJava(EclipseLintClient.java:1142)
+	at com.android.tools.lint.client.api.JavaVisitor.visitFile(JavaVisitor.java:196)
+	at com.android.tools.lint.client.api.LintDriver.checkIndividualJavaFiles(LintDriver.java:1624)
+	at com.android.tools.lint.client.api.LintDriver.runFileDetectors(LintDriver.java:993)
+	at com.android.tools.lint.client.api.LintDriver.checkProject(LintDriver.java:869)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:442)
+	at com.android.tools.lint.client.api.LintDriver.analyze(LintDriver.java:363)
+	at com.android.ide.eclipse.adt.internal.lint.LintJob.run(LintJob.java:163)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+
+!ENTRY org.eclipse.jdt.debug 4 125 2013-12-18 16:57:33.793
+!MESSAGE Internal error logged from JDI Debug: 
+!STACK 0
+org.eclipse.jdi.TimeoutException: Timeout occurred while waiting for packet 839.
+	at org.eclipse.jdi.internal.connect.PacketReceiveManager.getReply(PacketReceiveManager.java:186)
+	at org.eclipse.jdi.internal.connect.PacketReceiveManager.getReply(PacketReceiveManager.java:197)
+	at org.eclipse.jdi.internal.MirrorImpl.requestVM(MirrorImpl.java:191)
+	at org.eclipse.jdi.internal.MirrorImpl.requestVM(MirrorImpl.java:226)
+	at org.eclipse.jdi.internal.MirrorImpl.requestVM(MirrorImpl.java:258)
+	at org.eclipse.jdi.internal.ReferenceTypeImpl.fields(ReferenceTypeImpl.java:908)
+	at org.eclipse.jdi.internal.ReferenceTypeImpl.visibleFields(ReferenceTypeImpl.java:719)
+	at org.eclipse.jdi.internal.ReferenceTypeImpl.visibleFields(ReferenceTypeImpl.java:733)
+	at org.eclipse.jdi.internal.ReferenceTypeImpl.fieldByName(ReferenceTypeImpl.java:882)
+	at org.eclipse.jdt.internal.debug.core.model.JDIReferenceType.getField(JDIReferenceType.java:102)
+	at org.eclipse.jdt.internal.debug.ui.JavaDebugHover.getHoverInfo2(JavaDebugHover.java:295)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:129)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:85)
+	at org.eclipse.jface.text.TextViewerHoverManager$4.run(TextViewerHoverManager.java:166)

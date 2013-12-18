@@ -1,0 +1,66 @@
+package com.hacknight.expensebot.vp_slidingmenu;
+
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivityBase;
+
+import android.support.v4.app.Fragment;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+
+public class SlidingFragment extends Fragment implements SlidingActivityBase{
+
+	@Override
+	public void setBehindContentView(View view, LayoutParams layoutParams) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setBehindContentView(View view) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setBehindContentView(int layoutResID) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public SlidingMenu getSlidingMenu() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void toggle() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void showContent() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void showMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void showSecondaryMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setSlidingActionBarEnabled(boolean slidingActionBarEnabled) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
