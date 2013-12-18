@@ -1,9 +1,0 @@
-package com.hacknight.expensebot.vp_slidingmenu;
-
-import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
-
-public class BaseActivity extends SlidingFragmentActivity {
-	
-	
-	
-}
