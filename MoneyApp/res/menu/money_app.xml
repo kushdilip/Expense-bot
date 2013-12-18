@@ -1,6 +1,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
+        android:id="@+id/action_add"
+        android:icon="@drawable/ic_add"
+        android:showAsAction="always"
+        android:title="Add">
+        <menu>
+            <item
+                android:id="@+id/action_transaction"
+                android:showAsAction="always|withText"
+                android:title="Transaction"/>
+            <item
+                android:id="@+id/action_transfer"
+                android:showAsAction="always|withText"
+                android:title="Transfer"/>
+        </menu>
+    </item>
+    <!-- Settings, should always be in the overflow -->
+
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never"

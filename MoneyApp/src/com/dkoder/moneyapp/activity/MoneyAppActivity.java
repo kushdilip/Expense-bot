@@ -2,6 +2,7 @@ package com.dkoder.moneyapp.activity;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -85,7 +86,7 @@ public class MoneyAppActivity extends FragmentActivity {
 		// enabling action bar app icon and behaving it as toggle button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
-		
+
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 				R.drawable.ic_drawer, R.string.app_name, R.string.app_name) {
 			public void onDrawerClosed(View view) {
@@ -100,7 +101,7 @@ public class MoneyAppActivity extends FragmentActivity {
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
-		
+
 		if (savedInstanceState == null) {
 			displayView(0);
 		}
@@ -112,14 +113,23 @@ public class MoneyAppActivity extends FragmentActivity {
 		getMenuInflater().inflate(R.menu.money_app, menu);
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
-
+		
+		Intent intent;
 		switch (item.getItemId()) {
+		case R.id.action_transaction:
+			intent = new Intent(this, EditEntryActivity.class);
+			this.startActivity(intent);
+			return true;		
+		case R.id.action_transfer:
+			intent = new Intent(this, EditEntryActivity.class);
+			this.startActivity(intent);
+			return true;		
 		case R.id.action_settings:
 			return true;
 		default:
@@ -170,29 +180,27 @@ public class MoneyAppActivity extends FragmentActivity {
 			fragment = new HelpFragment();
 			break;
 		}
-		
+
 		if (fragment != null) {
 			FragmentManager fragmentManager = getSupportFragmentManager();
 			fragmentManager.beginTransaction()
-			.replace(R.id.frame_container, fragment).commit();
-			
-			//update selected item and title, then close the drawer
-//			mDrawerList.setItemChecked(position, true);
-//			mDrawerList.setSelection(position);
-//			setTitle(navMenuTitles[position]);
-//			mDrawerLayout.closeDrawer(mDrawerList);
+					.replace(R.id.frame_container, fragment).commit();
+
+			// update selected item and title, then close the drawer
+			// mDrawerList.setItemChecked(position, true);
+			// mDrawerList.setSelection(position);
+			// setTitle(navMenuTitles[position]);
+			// mDrawerLayout.closeDrawer(mDrawerList);
 		} else {
 			Log.e("MoneyAppActivity", "Error in creating fragment");
 		}
 
-		//Moved out from if condition
+		// Moved out from if condition
 		mDrawerList.setItemChecked(position, true);
 		mDrawerList.setSelection(position);
 		setTitle(navMenuTitles[position]);
 		mDrawerLayout.closeDrawer(mDrawerList);
 	}
-
-	
 
 	private class SlideMenuClickListener implements
 			ListView.OnItemClickListener {
