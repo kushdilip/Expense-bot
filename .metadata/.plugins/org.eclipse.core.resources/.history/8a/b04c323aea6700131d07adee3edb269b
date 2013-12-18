@@ -31,10 +31,11 @@ public class HomeFragment extends Fragment {
 
 		mView = inflater.inflate(R.layout.activity_main, container, false);
 
-		mAdapter = new FragmentAdapter((FragmentActivity)getActivity());
+//		mAdapter = new FragmentAdapter((FragmentActivity)getActivity());
+		mAdapter = new FragmentAdapter(getChildFragmentManager());
 		
 		mViewPager = (ViewPager) mView.findViewById(R.id.pager);
-	//	mViewPager.setAdapter(mAdapter);
+		mViewPager.setAdapter(mAdapter);
 
 		new setAdapterTask().execute();
 		

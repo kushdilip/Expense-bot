@@ -34,7 +34,7 @@ public class HomeFragment extends Fragment {
 		mAdapter = new FragmentAdapter((FragmentActivity)getActivity());
 		
 		mViewPager = (ViewPager) mView.findViewById(R.id.pager);
-	//	mViewPager.setAdapter(mAdapter);
+		mViewPager.setAdapter(mAdapter);
 
 		new setAdapterTask().execute();
 		
