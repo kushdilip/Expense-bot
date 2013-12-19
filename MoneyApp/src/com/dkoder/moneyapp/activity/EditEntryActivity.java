@@ -75,13 +75,8 @@ public class EditEntryActivity extends Activity {
 			@Override
 		    public void onItemSelected(AdapterView<?> parent, View view, int position,
 		            long id) {
-		        // On selecting a spinner item
 		        String label = parent.getItemAtPosition(position).toString();
 		 
-		        // Showing selected spinner item
-//		        Toast.makeText(parent.getContext(), "You selected: " + label + ", " + id,
-//		                Toast.LENGTH_LONG).show();
-		        
 		        transaction.setCategoryName(label);
 		    }
 
@@ -154,13 +149,11 @@ public class EditEntryActivity extends Activity {
 			int id = extras.getInt("id");
 			transaction = handler.getTransaction(extras.getInt("id"));
 			
-//			String amount = "" + extras.getFloat("amount");
 			String amount = "" + transaction.getAmount();
 			edit_amount.setText(amount);
 			
 			edit_details.setText(transaction.getDetails());
 
-//			String date_string = extras.getString("date");
 			String date_string = transaction.getDate();
 			SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 			Date date;

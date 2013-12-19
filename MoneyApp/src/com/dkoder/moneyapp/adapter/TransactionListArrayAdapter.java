@@ -2,6 +2,7 @@ package com.dkoder.moneyapp.adapter;
 
 import java.util.ArrayList;
 
+import android.R.color;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -36,9 +37,11 @@ public class TransactionListArrayAdapter extends ArrayAdapter<Transaction> {
 	}
 
 	/* private view holder class */
-	private class ViewHolder {
+	static class ViewHolder {
 		TextView amount;
 		TextView date;
+		TextView category;
+		TextView account;
 		int position;
 		Transaction model;
 	}
@@ -47,7 +50,7 @@ public class TransactionListArrayAdapter extends ArrayAdapter<Transaction> {
 		View view = null;
 		if (position > allModelItemsArray.size())
 			return null;
-		final Transaction m = allModelItemsArray.get(position);
+		final Transaction transaction = allModelItemsArray.get(position);
 		final ViewHolder viewHolder = new ViewHolder();
 		ViewHolder Holder = null;
 		if (convertView == null) {
@@ -55,21 +58,23 @@ public class TransactionListArrayAdapter extends ArrayAdapter<Transaction> {
 			view.setTag(viewHolder);
 			viewHolder.amount = (TextView) view.findViewById(R.id.amount);
 			viewHolder.date = (TextView) view.findViewById(R.id.date);
+			viewHolder.category = (TextView) view.findViewById(R.id.categroy_text);
+			viewHolder.category = (TextView) view.findViewById(R.id.account_text);
 			viewHolder.position = position;
 			Holder = viewHolder;
-
 		} else {
 			view = convertView;
 			Holder = ((ViewHolder) view.getTag());
 		}
-		Holder.amount.setText("\u20B9" + String.valueOf(m.getAmount()));
-		Holder.date.setText(m.getDate());
-		Holder.model = m;
+		
+		Holder.amount.setText("\u20B9" + String.valueOf(transaction.getAmount()));
+		Holder.date.setText(transaction.getDate());
+		Holder.model = transaction;
 		Holder.position = position;
 		if (Holder.model.getTransactionKind() == 0) {
-			Holder.amount.setTextColor(Color.GREEN);
+			//Holder.amount.setTextColor(Color.GREEN);
 		} else {
-			Holder.amount.setTextColor(Color.RED);
+			//Holder.amount.setTextColor(Color.RED);
 		}
 		view.setOnClickListener(new OnClickListener() {
 
