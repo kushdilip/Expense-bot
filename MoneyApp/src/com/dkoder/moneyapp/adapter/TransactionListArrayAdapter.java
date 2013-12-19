@@ -22,7 +22,6 @@ public class TransactionListArrayAdapter extends ArrayAdapter<Transaction> {
 
 	Activity context;
 	private ArrayList<Transaction> allModelItemsArray;
-	private ExpenseListFragment expenseListfragment;
 	private LayoutInflater inflator;
 
 
@@ -30,7 +29,6 @@ public class TransactionListArrayAdapter extends ArrayAdapter<Transaction> {
 			ExpenseListFragment expenseListFragment, ArrayList<Transaction> list) {
 		super(context, R.layout.transaction_list_item, list);
 		this.context = context;
-		this.expenseListfragment = expenseListFragment;
 		this.allModelItemsArray = new ArrayList<Transaction>();
 		allModelItemsArray.addAll(list);
 		inflator = context.getLayoutInflater();
@@ -39,7 +37,6 @@ public class TransactionListArrayAdapter extends ArrayAdapter<Transaction> {
 
 	/* private view holder class */
 	private class ViewHolder {
-		ImageView icon;
 		TextView amount;
 		TextView date;
 		int position;
@@ -58,7 +55,6 @@ public class TransactionListArrayAdapter extends ArrayAdapter<Transaction> {
 			view.setTag(viewHolder);
 			viewHolder.amount = (TextView) view.findViewById(R.id.amount);
 			viewHolder.date = (TextView) view.findViewById(R.id.date);
-			viewHolder.icon = (ImageView) view.findViewById(R.id.icon);
 			viewHolder.position = position;
 			Holder = viewHolder;
 
@@ -66,15 +62,13 @@ public class TransactionListArrayAdapter extends ArrayAdapter<Transaction> {
 			view = convertView;
 			Holder = ((ViewHolder) view.getTag());
 		}
-		Holder.amount.setText("Rs. " + String.valueOf(m.getAmount()));
+		Holder.amount.setText("\u20B9" + String.valueOf(m.getAmount()));
 		Holder.date.setText(m.getDate());
 		Holder.model = m;
 		Holder.position = position;
 		if (Holder.model.getTransactionKind() == 0) {
-			Holder.icon.setImageResource(R.drawable.increase);
 			Holder.amount.setTextColor(Color.GREEN);
 		} else {
-			Holder.icon.setImageResource(R.drawable.decrease);
 			Holder.amount.setTextColor(Color.RED);
 		}
 		view.setOnClickListener(new OnClickListener() {
@@ -84,9 +78,6 @@ public class TransactionListArrayAdapter extends ArrayAdapter<Transaction> {
 				Intent intent = new Intent(context, EditEntryActivity.class);
 				
 //				allModelItemsArray.get(position).getAmount()
-				
-				
-				
 //				intent.putExtra("amount", allModelItemsArray.get(position).getAmount());
 //				intent.putExtra("date", allModelItemsArray.get(position).getDate());
 				intent.putExtra("id", allModelItemsArray.get(position).getId());

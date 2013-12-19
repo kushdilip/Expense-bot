@@ -1,48 +1,71 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="#FFF"
-    android:orientation="horizontal"
-    android:padding="6dip"
-    android:weightSum="1.0" >
+    android:padding="6dip" >
 
-    <ImageView
-        android:id="@+id/icon"
-        android:layout_width="60dp"
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.30"
-        android:src="@drawable/ic_launcher" />
+        android:layout_alignParentLeft="true"
+        android:text="Small Text"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.45"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:orientation="vertical" >
+        android:id="@+id/category_row"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date"
+        android:paddingTop="3sp" >
 
         <TextView
-            android:id="@+id/amount"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="Medium Text"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:id="@+id/for_text"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:paddingRight="15sp"
+            android:text="for" />
 
         <TextView
-            android:id="@+id/date"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Small Text"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:id="@+id/categroy_text"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="Other"
+            android:textStyle="bold" />
+        >
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/edit_img"
-        android:layout_marginRight="10dp"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_weight="0.25"
-        android:src="@drawable/ic_edit" />
+    <LinearLayout
+        android:id="@+id/account_row"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/category_row"
+        android:paddingTop="3sp" >
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/from_text"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:paddingRight="15sp"
+            android:text="from" />
+
+        <TextView
+            android:id="@+id/amount_text"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:text="Other"
+            android:textStyle="bold" />
+        >
+    </LinearLayout>
+
+</RelativeLayout>
