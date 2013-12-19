@@ -42,6 +42,7 @@ public class ExpenseListFragment extends Fragment {
         DBHandler handler = new DBHandler(getActivity());
 
         List<Transaction> transactions = handler.getAllTransactions();
+        items.clear();
         items.addAll(transactions);
         
         //Collections.sort(items);

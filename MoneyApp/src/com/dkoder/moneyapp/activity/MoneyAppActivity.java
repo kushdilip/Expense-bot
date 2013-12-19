@@ -119,17 +119,17 @@ public class MoneyAppActivity extends FragmentActivity {
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
 		}
-		
+
 		Intent intent;
 		switch (item.getItemId()) {
 		case R.id.action_transaction:
 			intent = new Intent(this, EditEntryActivity.class);
 			this.startActivity(intent);
-			return true;		
+			return true;
 		case R.id.action_transfer:
 			intent = new Intent(this, EditEntryActivity.class);
 			this.startActivity(intent);
-			return true;		
+			return true;
 		case R.id.action_settings:
 			return true;
 		default:

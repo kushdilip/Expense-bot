@@ -11,6 +11,8 @@ import com.dkoder.moneyapp.activity.ExpenseSummaryFragment;
 
 public class FragmentAdapter extends FragmentPagerAdapter{
 
+	private static final String[] tabs = { "Summary", "Transactions" };
+	
 	public FragmentAdapter(FragmentActivity activity) {
 		super(activity.getSupportFragmentManager());
 	}
@@ -51,14 +53,7 @@ public class FragmentAdapter extends FragmentPagerAdapter{
 	@Override
 	public CharSequence getPageTitle(int position) {
 		String title = "";
-		switch (position) {
-		case 0:
-			title = "SUMMARY";
-			break;
-		case 1:
-			title = "LIST";
-			break;
-		}
+		title = tabs[position];
 		return title;
 	}
 
