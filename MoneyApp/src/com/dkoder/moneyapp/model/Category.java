@@ -4,9 +4,9 @@ public class Category {
 
 	private int id;
 	private String categoryName;
-	
+	private boolean isExpense;
+
 	public Category() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getId() {
@@ -24,6 +24,18 @@ public class Category {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	
-	
+
+	public boolean isExpense() {
+		return isExpense;
+	}
+
+	public void setExpense(boolean isExpense) {
+		this.isExpense = isExpense;
+	}
+
+	@Override
+	public String toString() {
+		return this.categoryName;
+	}
+
 }

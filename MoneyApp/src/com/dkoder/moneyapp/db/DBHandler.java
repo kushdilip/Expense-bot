@@ -22,7 +22,7 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 	public static final int DATABASE_VERSION = 1;
 
 	// Database name
-	public static final String DATABASE_NAME = "ExpenseBot.db";
+	public static final String DATABASE_NAME = "MoneyApp.db";
 
 	// Table Names
 	public static final String TABLE_TRANSACTION = "transaction_data";
@@ -43,8 +43,9 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 	// Category Table column name
 	public static final String KEY_CATEGORY_NAME = "category_name";
 
-	// Category Table column name
+	// AccountKind Table column name
 	public static final String KEY_ACCOUNT_NAME = "account_name";
+	public static final String KEY_IS_EXPENSE = "is_expense";
 
 	public static final String COLUMN_ACC_TYPE_CASH = "Cash";
 	public static final String COLUMN_ACC_TYPE_ACCOUNT = "Account";
@@ -60,14 +61,11 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 			+ " REAL,"
 			+ KEY_DESCRIPTION
 			+ " TEXT,"
-			+ KEY_TRANSACTION_KIND
-			+ " INTEGER,"
 			+ KEY_CREATED_AT
 			+ " TEXT,"
 			+ KEY_ACCOUNT_KIND_ID
 			+ " INTEGER,"
-			+ KEY_CATEGORY_ID
-			+ " INTEGER )";
+			+ KEY_CATEGORY_ID + " INTEGER )";
 
 	// Category table create statement
 	private static final String CREATE_TABLE_CATEGORY = "CREATE TABLE IF NOT EXISTS "
@@ -75,7 +73,10 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 			+ " ("
 			+ KEY_ID
 			+ " INTEGER PRIMARY KEY,"
-			+ KEY_CATEGORY_NAME + " TEXT )";
+			+ KEY_CATEGORY_NAME 
+			+ " TEXT," 
+			+ KEY_IS_EXPENSE 
+			+ " INTEGER)";
 
 	// Account_kind table create statement
 	private static final String CREATE_TABLE_ACCOUNT_KIND = "CREATE TABLE IF NOT EXISTS "
@@ -85,18 +86,15 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 			+ " INTEGER PRIMARY KEY,"
 			+ KEY_ACCOUNT_NAME + " TEXT )";
 
-	//Initialize master db
+	// Initialize master db
 	private static final String INITIALIZE_CATEGORIES = "INSERT INTO "
-			+ TABLE_CATEGORY + " ("
-			+ KEY_CATEGORY_NAME + ") VALUES ("
-			+ "'Food' ), ( 'Shopping');";
-	
-	
+			+ TABLE_CATEGORY + " (" + KEY_CATEGORY_NAME + ", " + KEY_IS_EXPENSE
+			+ ") VALUES ( 'Food', 1), ( 'Shopping', 1), ( 'Other', 1);";
+
 	private static final String INITIALIZE_ACCOUNT_KINDS = "INSERT INTO "
-			+ TABLE_ACCOUNT_KIND + " ("
-			+ KEY_ACCOUNT_NAME + ") VALUES ("
+			+ TABLE_ACCOUNT_KIND + " (" + KEY_ACCOUNT_NAME + ") VALUES ("
 			+ "'Cash' ), ('Account');";
-	
+
 	public DBHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
@@ -108,10 +106,9 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 		db.execSQL(CREATE_TABLE_ACCOUNT_KIND);
 		db.execSQL(CREATE_TABLE_CATEGORY);
 		
-		//Initialize master db
-		db.execSQL(INITIALIZE_CATEGORIES);
+		// Initialize master db
 		db.execSQL(INITIALIZE_ACCOUNT_KINDS);
-		
+		db.execSQL(INITIALIZE_CATEGORIES);
 	}
 
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -134,14 +131,13 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 		ContentValues values = new ContentValues();
 		values.put(KEY_AMOUNT, transaction.getAmount());
 		values.put(KEY_DESCRIPTION, transaction.getDetails());
-		values.put(KEY_TRANSACTION_KIND, transaction.getTransactionKind());
 		values.put(KEY_CREATED_AT, transaction.getDate());
 		values.put(KEY_ACCOUNT_KIND_ID, transaction.getAccountKindId());
 		values.put(KEY_CATEGORY_ID, transaction.getCategoryId());
 
 		long transaction_id = db.insert(TABLE_TRANSACTION, null, values);
-		
-		return transaction_id;		
+
+		return transaction_id;
 	}
 
 	@Override
@@ -149,19 +145,20 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 		// TODO Auto-generated method stub
 		Transaction transaction = new Transaction();
 		SQLiteDatabase db = this.getReadableDatabase();
-		
-		String selectQuery = "SELECT * FROM " + TABLE_TRANSACTION + " WHERE " + KEY_ID + " = " + id;
-		
+
+		String selectQuery = "SELECT * FROM " + TABLE_TRANSACTION + " WHERE "
+				+ KEY_ID + " = " + id;
+
 		Cursor c = db.rawQuery(selectQuery, null);
-		
-		if(c != null)
+
+		if (c != null)
 			c.moveToFirst();
-		
+
 		transaction.setId(c.getInt(c.getColumnIndex(KEY_ID)));
 		transaction.setAmount(c.getFloat(c.getColumnIndex(KEY_AMOUNT)));
 		transaction.setDate(c.getString(c.getColumnIndex(KEY_CREATED_AT)));
 		transaction.setDetails(c.getString(c.getColumnIndex(KEY_DESCRIPTION)));
-		
+
 		c.close();
 		return transaction;
 	}
@@ -183,10 +180,9 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 				transaction.setId(cursor.getInt(0));
 				transaction.setAmount(cursor.getFloat(1));
 				transaction.setDetails(cursor.getString(2));
-				transaction.setTransactionKind(cursor.getShort(3));
-				transaction.setDate(cursor.getString(4));
-				transaction.setAccountKindId(cursor.getInt(5));
-				transaction.setCategoryId(cursor.getInt(6));
+				transaction.setDate(cursor.getString(3));
+				transaction.setAccountKindId(cursor.getInt(4));
+				transaction.setCategoryId(cursor.getInt(5));
 
 				transactionList.add(transaction);
 			} while (cursor.moveToNext());
@@ -194,8 +190,10 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 		cursor.close();
 
 		for (Transaction transaction : transactionList) {
-			// transaction.setAccountKindName(getAccountKindName(transaction.getCategoryId()));
-			// transaction.setCategoryName(getCategoryName(transaction.getCategoryId()));
+			transaction.setAccountKindName(getAccountKindNameById(transaction
+					.getAccountKindId()));
+			transaction.setCategoryName(getCategoryNameById(transaction
+					.getCategoryId()));
 		}
 
 		return transactionList;
@@ -274,53 +272,53 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 	public List<Category> getAllCategories() {
 		List<Category> categories = new ArrayList<Category>();
 		String selectQuery = "SELECT * FROM " + TABLE_CATEGORY;
-		
+
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor c = db.rawQuery(selectQuery, null);
-		
+
 		if (c.moveToFirst()) {
 			do {
 				Category cg = new Category();
 				cg.setId(c.getInt(0));
 				cg.setCategoryName(c.getString(1));
-				
+
 				categories.add(cg);
 			} while (c.moveToNext());
 		}
-		
+
 		c.close();
-		
+
 		return categories;
-		
+
 	}
 
 	@Override
 	public List<AccountKind> getAllAccountKind() {
-		
+
 		List<AccountKind> accountKinds = new ArrayList<AccountKind>();
 		String selectQuery = "SELECT * FROM " + TABLE_ACCOUNT_KIND;
-		
+
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor c = db.rawQuery(selectQuery, null);
-		
+
 		if (c.moveToFirst()) {
 			do {
 				AccountKind ak = new AccountKind();
 				ak.setId(c.getInt(0));
 				ak.setAccountKindName(c.getString(1));
-				
+
 				accountKinds.add(ak);
 			} while (c.moveToNext());
 		}
-		
+
 		c.close();
 		return accountKinds;
 	}
-	
+
 	// closing database
-    public void closeDB() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        if (db != null && db.isOpen())
-            db.close();
-    }
+	public void closeDB() {
+		SQLiteDatabase db = this.getReadableDatabase();
+		if (db != null && db.isOpen())
+			db.close();
+	}
 }

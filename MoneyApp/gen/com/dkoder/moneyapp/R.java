@@ -61,9 +61,8 @@ public final class R {
         public static final int account_text=0x7f0a0017;
         public static final int accounts=0x7f0a000a;
         public static final int action_add=0x7f0a0019;
-        public static final int action_settings=0x7f0a001c;
+        public static final int action_settings=0x7f0a001b;
         public static final int action_transaction=0x7f0a001a;
-        public static final int action_transfer=0x7f0a001b;
         public static final int amount=0x7f0a0011;
         public static final int cancel_button=0x7f0a000e;
         public static final int categories=0x7f0a0009;

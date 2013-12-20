@@ -25,6 +25,9 @@ public class AccountKind {
 	public void setAccountKindName(String accountKindName) {
 		this.accountKindName = accountKindName;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return this.accountKindName;
+	}
 }

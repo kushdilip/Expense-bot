@@ -2,16 +2,13 @@ package com.dkoder.moneyapp.adapter;
 
 import java.util.ArrayList;
 
-import android.R.color;
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dkoder.moneyapp.R;
@@ -24,7 +21,6 @@ public class TransactionListArrayAdapter extends ArrayAdapter<Transaction> {
 	Activity context;
 	private ArrayList<Transaction> allModelItemsArray;
 	private LayoutInflater inflator;
-
 
 	public TransactionListArrayAdapter(Activity context,
 			ExpenseListFragment expenseListFragment, ArrayList<Transaction> list) {
@@ -58,33 +54,31 @@ public class TransactionListArrayAdapter extends ArrayAdapter<Transaction> {
 			view.setTag(viewHolder);
 			viewHolder.amount = (TextView) view.findViewById(R.id.amount);
 			viewHolder.date = (TextView) view.findViewById(R.id.date);
-			viewHolder.category = (TextView) view.findViewById(R.id.categroy_text);
-			viewHolder.category = (TextView) view.findViewById(R.id.account_text);
+			viewHolder.category = (TextView) view
+					.findViewById(R.id.categroy_text);
+			viewHolder.account = (TextView) view
+					.findViewById(R.id.account_text);
 			viewHolder.position = position;
 			Holder = viewHolder;
 		} else {
 			view = convertView;
 			Holder = ((ViewHolder) view.getTag());
 		}
-		
-		Holder.amount.setText("\u20B9" + String.valueOf(transaction.getAmount()));
+
+		Holder.amount.setText("\u20B9"
+				+ String.valueOf(transaction.getAmount()));
 		Holder.date.setText(transaction.getDate());
+		Holder.category.setText(transaction.getCategoryName());
+		Holder.account.setText(transaction.getAccountKindName());
 		Holder.model = transaction;
 		Holder.position = position;
-		if (Holder.model.getTransactionKind() == 0) {
-			//Holder.amount.setTextColor(Color.GREEN);
-		} else {
-			//Holder.amount.setTextColor(Color.RED);
-		}
+		// Holder.amount.setTextColor(Color.GREEN);
+
 		view.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(context, EditEntryActivity.class);
-				
-//				allModelItemsArray.get(position).getAmount()
-//				intent.putExtra("amount", allModelItemsArray.get(position).getAmount());
-//				intent.putExtra("date", allModelItemsArray.get(position).getDate());
 				intent.putExtra("id", allModelItemsArray.get(position).getId());
 				context.startActivity(intent);
 			}

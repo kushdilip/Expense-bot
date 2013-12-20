@@ -18,8 +18,16 @@ public class ExpenseSummaryFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.transaction_summary, null);
-
 		totalTransactions = (TextView) v.findViewById(R.id.totalTransactions);
+
+		return v;
+
+	}
+
+	
+	@Override
+	public void onResume() {
+		super.onResume();
 		DBHandler handler = new DBHandler(getActivity());
 
 		int count = handler.getAllTransactions().size();
@@ -28,9 +36,8 @@ public class ExpenseSummaryFragment extends Fragment {
 
 		totalTransactions.setText("Total number of Expenses: " + count);
 
-		return v;
-
 	}
+
 
 	@Override
 	public void onSaveInstanceState(Bundle outState) {

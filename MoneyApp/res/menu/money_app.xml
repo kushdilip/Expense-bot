@@ -10,10 +10,12 @@
                 android:id="@+id/action_transaction"
                 android:showAsAction="always|withText"
                 android:title="Transaction"/>
+            <!--
             <item
                 android:id="@+id/action_transfer"
                 android:showAsAction="always|withText"
-                android:title="Transfer"/>
+                android:title="Transfer"/>
+            -->
         </menu>
     </item>
     <!-- Settings, should always be in the overflow -->
