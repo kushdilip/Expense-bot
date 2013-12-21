@@ -9,15 +9,15 @@ import android.view.View;
 import com.dkoder.moneyapp.activity.ExpenseListFragment;
 import com.dkoder.moneyapp.activity.ExpenseSummaryFragment;
 
-public class FragmentAdapter extends FragmentPagerAdapter{
+public class HomeFragmentAdapter extends FragmentPagerAdapter{
 
 	private static final String[] tabs = { "Summary", "Transactions" };
 	
-	public FragmentAdapter(FragmentActivity activity) {
+	public HomeFragmentAdapter(FragmentActivity activity) {
 		super(activity.getSupportFragmentManager());
 	}
 	
-	public FragmentAdapter(FragmentManager fm){
+	public HomeFragmentAdapter(FragmentManager fm){
 		super(fm);
 	}
 	

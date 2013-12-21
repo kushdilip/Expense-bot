@@ -14,13 +14,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dkoder.moneyapp.R;
-import com.dkoder.moneyapp.adapter.FragmentAdapter;
+import com.dkoder.moneyapp.adapter.HomeFragmentAdapter;
 
 public class HomeFragment extends Fragment {
 
 	View mView;
 	ViewPager mViewPager;
-	FragmentAdapter mAdapter;
+	HomeFragmentAdapter mAdapter;
 	ActionBar actionBar;
 	PagerTabStrip strip;
 
@@ -33,7 +33,7 @@ public class HomeFragment extends Fragment {
 		mView = inflater.inflate(R.layout.home, container, false);
 
 		// ViewPager setting
-		mAdapter = new FragmentAdapter((FragmentActivity) getActivity());
+		mAdapter = new HomeFragmentAdapter((FragmentActivity) getActivity());
 		mViewPager = (ViewPager) mView.findViewById(R.id.pager);
 		strip = PagerTabStrip.class.cast(mView.findViewById(R.id.pts_main));
 

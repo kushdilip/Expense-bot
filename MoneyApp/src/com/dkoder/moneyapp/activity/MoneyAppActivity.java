@@ -2,7 +2,6 @@ package com.dkoder.moneyapp.activity;
 
 import java.util.ArrayList;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -176,6 +175,9 @@ public class MoneyAppActivity extends FragmentActivity {
 		switch (position) {
 		case 0:
 			fragment = new HomeFragment();
+			break;
+		case 1:
+			fragment = new StatisticsFragment();
 			break;
 		case 2:
 			fragment = new HelpFragment();

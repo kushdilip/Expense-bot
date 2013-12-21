@@ -33,13 +33,11 @@ public class NavDrawerListAdapter extends BaseAdapter {
 
 	@Override
 	public Object getItem(int position) {
-		// TODO Auto-generated method stub
 		return navDrawerItems.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
 		return position;
 	}
 
@@ -66,5 +64,4 @@ public class NavDrawerListAdapter extends BaseAdapter {
 		}
 		return convertView;
 	}
-
 }
