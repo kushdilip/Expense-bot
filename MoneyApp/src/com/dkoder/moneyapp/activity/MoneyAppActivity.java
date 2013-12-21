@@ -85,7 +85,7 @@ public class MoneyAppActivity extends FragmentActivity {
 
 		// enabling action bar app icon and behaving it as toggle button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-//		getActionBar().setHomeButtonEnabled(true);
+		// getActionBar().setHomeButtonEnabled(true);
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 				R.drawable.ic_drawer, R.string.app_name, R.string.app_name) {
@@ -126,10 +126,10 @@ public class MoneyAppActivity extends FragmentActivity {
 			intent = new Intent(this, EditEntryActivity.class);
 			this.startActivity(intent);
 			return true;
-//		case R.id.action_transfer:
-//			intent = new Intent(this, EditEntryActivity.class);
-//			this.startActivity(intent);
-//			return true;
+			// case R.id.action_transfer:
+			// intent = new Intent(this, EditEntryActivity.class);
+			// this.startActivity(intent);
+			// return true;
 		case R.id.action_settings:
 			return true;
 		default:
