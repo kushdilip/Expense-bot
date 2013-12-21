@@ -28,10 +28,12 @@ import com.dkoder.moneyapp.db.DBHandler;
 import com.dkoder.moneyapp.model.AccountKind;
 import com.dkoder.moneyapp.model.Category;
 import com.dkoder.moneyapp.model.Transaction;
+import com.revmob.RevMob;
 
 @SuppressLint("SimpleDateFormat")
 public class EditEntryActivity extends Activity {
-
+	RevMob revmob; //advertising
+	
 	EditText edit_amount;
 	EditText edit_details;
 	Button ok_button;
@@ -45,11 +47,14 @@ public class EditEntryActivity extends Activity {
 
 	Context context;
 
-//	@SuppressWarnings("deprecation")
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		this.setContentView(R.layout.new_transaction);
+
+		// Revmob add network
+		revmob = RevMob.start(this, "52b608d20c3aa6d7a8000008");
+
 		
 		context = this;
 		final DBHandler handler = new DBHandler(this);
@@ -172,6 +177,10 @@ public class EditEntryActivity extends Activity {
 
 //				Intent intent = new Intent(context, MoneyAppActivity.class);
 //				context.startActivity(intent);
+				
+				//Advertising
+				revmob.showFullscreen((Activity) context);
+				
 				finish();
 			}
 		});
@@ -181,6 +190,10 @@ public class EditEntryActivity extends Activity {
 			public void onClick(View v) {
 //				Intent intent = new Intent(context, MoneyAppActivity.class);
 //				context.startActivity(intent);
+
+				//Advertising
+				revmob.showFullscreen((Activity) context);
+
 				finish();
 			}
 		});

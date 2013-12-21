@@ -45,6 +45,7 @@ public class MoneyAppActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_money_app);
 
+
 		mTitle = mDrawerTitle = getTitle();
 
 		// load slide menu items

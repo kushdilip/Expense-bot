@@ -4,9 +4,6 @@
     android:versionCode="2"
     android:versionName="1.01" >
 
-    <meta-data
-        android:name="com.revmob.app.id"
-        android:value="52b608d20c3aa6d7a8000008" />
 
     <uses-sdk
         android:minSdkVersion="14"
