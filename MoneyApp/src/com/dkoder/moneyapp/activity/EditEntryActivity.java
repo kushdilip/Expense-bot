@@ -150,6 +150,7 @@ public class EditEntryActivity extends Activity {
 
 		} else {
 			actionBar.setTitle("Add New Transaction");
+//			edit_amount.setText("0.0");
 			String dateString = c.get(Calendar.DATE) + "/"
 					+ c.get(Calendar.MONTH) + "/" + c.get(Calendar.YEAR);
 			datepicker.setText(dateString);
@@ -165,7 +166,6 @@ public class EditEntryActivity extends Activity {
 				transaction.setAmount(Float.valueOf(str_amount));
 				
 				//get the details
-				String details = edit_details.getText().toString();
 				transaction.setDetails(edit_details.getText().toString());
 				
 				handler.addTransaction(transaction);

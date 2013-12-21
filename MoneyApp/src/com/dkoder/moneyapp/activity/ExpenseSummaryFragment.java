@@ -21,9 +21,7 @@ public class ExpenseSummaryFragment extends Fragment {
 		totalTransactions = (TextView) v.findViewById(R.id.totalTransactions);
 
 		return v;
-
 	}
-
 	
 	@Override
 	public void onResume() {
@@ -57,5 +55,4 @@ public class ExpenseSummaryFragment extends Fragment {
 				R.id.totalTransactions);
 		view.setText(item);
 	}
-
 }
