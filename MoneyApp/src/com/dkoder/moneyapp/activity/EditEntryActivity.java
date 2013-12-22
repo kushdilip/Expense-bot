@@ -53,8 +53,7 @@ public class EditEntryActivity extends Activity {
 		this.setContentView(R.layout.new_transaction);
 
 		// Revmob add network
-		revmob = RevMob.start(this, "52b608d20c3aa6d7a8000008");
-
+		revmob = RevMob.start(this, "52b6fa97ab49f0784c000003");
 		
 		context = this;
 		final DBHandler handler = new DBHandler(this);

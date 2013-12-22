@@ -57,27 +57,28 @@ public final class R {
         public static final int list_selector=0x7f02000a;
     }
     public static final class id {
-        public static final int account_row=0x7f0a0017;
-        public static final int account_text=0x7f0a0019;
+        public static final int account_row=0x7f0a0018;
+        public static final int account_text=0x7f0a001a;
         public static final int accounts=0x7f0a000c;
-        public static final int action_add=0x7f0a001b;
-        public static final int action_settings=0x7f0a001d;
-        public static final int action_transaction=0x7f0a001c;
+        public static final int action_add=0x7f0a001c;
+        public static final int action_settings=0x7f0a001e;
+        public static final int action_transaction=0x7f0a001d;
         public static final int adView=0x7f0a0007;
-        public static final int amount=0x7f0a0013;
+        public static final int amount=0x7f0a0014;
+        public static final int banner=0x7f0a0011;
         public static final int cancel_button=0x7f0a0010;
         public static final int categories=0x7f0a000b;
-        public static final int category_row=0x7f0a0014;
-        public static final int categroy_text=0x7f0a0016;
+        public static final int category_row=0x7f0a0015;
+        public static final int categroy_text=0x7f0a0017;
         public static final int counter=0x7f0a0005;
-        public static final int date=0x7f0a0012;
+        public static final int date=0x7f0a0013;
         public static final int datepicker=0x7f0a000d;
         public static final int drawer_layout=0x7f0a0000;
         public static final int edit_amount=0x7f0a000a;
         public static final int edit_details=0x7f0a000e;
-        public static final int for_text=0x7f0a0015;
+        public static final int for_text=0x7f0a0016;
         public static final int frame_container=0x7f0a0001;
-        public static final int from_text=0x7f0a0018;
+        public static final int from_text=0x7f0a0019;
         public static final int icon=0x7f0a0003;
         public static final int linearLayout=0x7f0a0006;
         public static final int list_slidermenu=0x7f0a0002;
@@ -85,8 +86,8 @@ public final class R {
         public static final int pager=0x7f0a0008;
         public static final int pts_main=0x7f0a0009;
         public static final int title=0x7f0a0004;
-        public static final int totalTransactions=0x7f0a001a;
-        public static final int transaction_listview=0x7f0a0011;
+        public static final int totalTransactions=0x7f0a001b;
+        public static final int transaction_listview=0x7f0a0012;
     }
     public static final class layout {
         public static final int activity_money_app=0x7f030000;
