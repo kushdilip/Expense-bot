@@ -34,5 +34,5 @@ public interface CRUDOperations {
 	
 	public List<AccountKind> getAllAccountKind();
 	
-	
+	public long addCategory(Category category);
 }

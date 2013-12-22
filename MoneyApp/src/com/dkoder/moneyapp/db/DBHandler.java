@@ -42,10 +42,10 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 
 	// Category Table column name
 	public static final String KEY_CATEGORY_NAME = "category_name";
+	public static final String KEY_CATEGORY_IS_EXPENSE = "is_expense";
 
 	// AccountKind Table column name
 	public static final String KEY_ACCOUNT_NAME = "account_name";
-	public static final String KEY_IS_EXPENSE = "is_expense";
 
 	public static final String COLUMN_ACC_TYPE_CASH = "Cash";
 	public static final String COLUMN_ACC_TYPE_ACCOUNT = "Account";
@@ -73,9 +73,9 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 			+ " ("
 			+ KEY_ID
 			+ " INTEGER PRIMARY KEY,"
-			+ KEY_CATEGORY_NAME 
-			+ " TEXT," 
-			+ KEY_IS_EXPENSE 
+			+ KEY_CATEGORY_NAME
+			+ " TEXT,"
+			+ KEY_CATEGORY_IS_EXPENSE
 			+ " INTEGER)";
 
 	// Account_kind table create statement
@@ -88,12 +88,19 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 
 	// Initialize master db
 	private static final String INITIALIZE_CATEGORIES = "INSERT INTO "
-			+ TABLE_CATEGORY + " (" + KEY_CATEGORY_NAME + ", " + KEY_IS_EXPENSE
-			+ ") VALUES ( 'Food', 1), ( 'Shopping', 1), ( 'Other', 1);";
+			+ TABLE_CATEGORY + " (" + KEY_CATEGORY_NAME + ", "
+			+ KEY_CATEGORY_IS_EXPENSE + ")" 
+			+ " SELECT 'Food', 1 "
+			+ " UNION SELECT 'Shopping', 1 " 
+			+ " UNION SELECT 'Other', 1;";
 
-	private static final String INITIALIZE_ACCOUNT_KINDS = "INSERT INTO "
-			+ TABLE_ACCOUNT_KIND + " (" + KEY_ACCOUNT_NAME + ") VALUES ("
-			+ "'Cash' ), ('Account');";
+	// private static final String INITIALIZE_ACCOUNT_KINDS = "INSERT INTO " +
+	// TABLE_ACCOUNT_KIND + " (" + KEY_ACCOUNT_NAME + ") VALUES (" +
+	// "'Cash' ), ('Account');";
+	private static final String INITIALIZE_ACCOUNT_KINDS = "INSERT INTO " + TABLE_ACCOUNT_KIND
+			+ "( " + KEY_ACCOUNT_NAME  + ")"
+			+ " SELECT 'Cash'"
+			+ " UNION SELECT 'Account';";
 
 	public DBHandler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -105,10 +112,12 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 		db.execSQL(CREATE_TABLE_TRANSACTION);
 		db.execSQL(CREATE_TABLE_ACCOUNT_KIND);
 		db.execSQL(CREATE_TABLE_CATEGORY);
-		
+
 		// Initialize master db
 		db.execSQL(INITIALIZE_ACCOUNT_KINDS);
 		db.execSQL(INITIALIZE_CATEGORIES);
+		// addCategory(new Category("Food", true));
+		// addCategory(new Category("Shopping", true));
 	}
 
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -126,7 +135,6 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 
 	@Override
 	public long addTransaction(Transaction transaction) {
-		// TODO Auto-generated method stub
 		SQLiteDatabase db = this.getWritableDatabase();
 		ContentValues values = new ContentValues();
 		values.put(KEY_AMOUNT, transaction.getAmount());
@@ -138,6 +146,20 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 		long transaction_id = db.insert(TABLE_TRANSACTION, null, values);
 
 		return transaction_id;
+	}
+
+	@Override
+	public long addCategory(Category category) {
+		SQLiteDatabase db = this.getWritableDatabase();
+		ContentValues values = new ContentValues();
+		values.put(KEY_CATEGORY_NAME, category.getCategoryName());
+		values.put(KEY_CATEGORY_IS_EXPENSE, category.isExpense() ? 1 : 0);
+
+		long category_id = db.insert(TABLE_CATEGORY, null, values);
+
+		// db.close();
+
+		return category_id;
 	}
 
 	@Override
@@ -321,4 +343,5 @@ public class DBHandler extends SQLiteOpenHelper implements CRUDOperations {
 		if (db != null && db.isOpen())
 			db.close();
 	}
+
 }

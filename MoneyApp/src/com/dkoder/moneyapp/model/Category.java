@@ -8,6 +8,12 @@ public class Category {
 
 	public Category() {
 	}
+	
+	public Category(String categoryName, boolean isExpense) {
+		super();
+		this.categoryName = categoryName;
+		this.isExpense = isExpense;
+	}
 
 	public int getId() {
 		return id;
