@@ -11,7 +11,6 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,6 +27,8 @@ import com.dkoder.moneyapp.db.DBHandler;
 import com.dkoder.moneyapp.model.AccountKind;
 import com.dkoder.moneyapp.model.Category;
 import com.dkoder.moneyapp.model.Transaction;
+import com.inmobi.commons.InMobi;
+import com.inmobi.monetization.IMBanner;
 import com.revmob.RevMob;
 
 @SuppressLint("SimpleDateFormat")
@@ -176,10 +177,7 @@ public class EditEntryActivity extends Activity {
 
 //				Intent intent = new Intent(context, MoneyAppActivity.class);
 //				context.startActivity(intent);
-				
-				//Advertising
-				revmob.showFullscreen((Activity) context);
-				
+								
 				finish();
 			}
 		});
