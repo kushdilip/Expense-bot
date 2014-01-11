@@ -168,16 +168,16 @@ public class EditEntryActivity extends Activity {
 			public void onClick(View v) {
 				//get the amount
 				String str_amount = edit_amount.getText().toString();
-				transaction.setAmount(Float.valueOf(str_amount));
 				
-				//get the details
-				transaction.setDetails(edit_details.getText().toString());
+				if (!str_amount.isEmpty()) {
+					transaction.setAmount(Float.valueOf(str_amount));
+					
+					//get the details
+					transaction.setDetails(edit_details.getText().toString());
+					
+					handler.addTransaction(transaction);
+				}
 				
-				handler.addTransaction(transaction);
-
-//				Intent intent = new Intent(context, MoneyAppActivity.class);
-//				context.startActivity(intent);
-								
 				finish();
 			}
 		});
@@ -189,7 +189,7 @@ public class EditEntryActivity extends Activity {
 //				context.startActivity(intent);
 
 				//Advertising
-				revmob.showFullscreen((Activity) context);
+//				revmob.showFullscreen((Activity) context);
 
 				finish();
 			}

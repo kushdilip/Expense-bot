@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dkoder.moneyapp.R;
-import com.inmobi.commons.InMobi;
-import com.inmobi.monetization.IMBanner;
 
 public class StatisticsFragment extends Fragment {
 	public StatisticsFragment() {	}
@@ -17,16 +15,8 @@ public class StatisticsFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View v = inflater.inflate(R.layout.statistics, container, false);
-		
-		//inmobi ads
-		InMobi.initialize(getActivity(), "75d230016a2949e48020d2e8e2d7a082");
-		IMBanner banner = (IMBanner)v.findViewById(R.id.banner);
-		banner.loadBanner();
-
-		
-		return v;
-		
+		View v = inflater.inflate(R.layout.statistics, container, false);		
+		return v;		
 	}
 
 	
@@ -35,5 +25,4 @@ public class StatisticsFragment extends Fragment {
 		super.onSaveInstanceState(outState);
 		setUserVisibleHint(true);
 	}
-
 }
