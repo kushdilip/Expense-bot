@@ -3,9 +3,11 @@ package com.dkoder.moneyapp.activity;
 import java.util.ArrayList;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -17,12 +19,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.dkoder.moneyapp.R;
 import com.dkoder.moneyapp.adapter.NavDrawerListAdapter;
 import com.dkoder.moneyapp.model.NavDrawerItem;
 
 public class MoneyAppActivity extends FragmentActivity {
+	private static final int RESULT_SETTINGS = 1;
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -44,7 +48,6 @@ public class MoneyAppActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_money_app);
-
 
 		mTitle = mDrawerTitle = getTitle();
 
@@ -132,10 +135,47 @@ public class MoneyAppActivity extends FragmentActivity {
 			// this.startActivity(intent);
 			// return true;
 		case R.id.action_settings:
+			Intent i = new Intent(this, UserSettingActivity.class);
+			startActivityForResult(i, RESULT_SETTINGS);
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+
+		switch (requestCode) {
+		case RESULT_SETTINGS:
+			showUserSettings();
+			break;
+
+		}
+	}
+
+	private void showUserSettings() {
+		SharedPreferences sharedPrefs = PreferenceManager
+				.getDefaultSharedPreferences(this);
+
+		StringBuilder builder = new StringBuilder();
+
+		builder.append("\n Username: "
+				+ sharedPrefs.getString("prefUsername", "NULL"));
+
+		builder.append("\n Send report:"
+				+ sharedPrefs.getBoolean("prefSendReport", false));
+
+		builder.append("\n Sync Frequency: "
+				+ sharedPrefs.getString("prefSyncFrequency", "NULL"));
+
+		Toast.makeText(this, builder.toString(), Toast.LENGTH_LONG).show();
+
+		// TextView settingsTextView = (TextView)
+		// findViewById(R.id.textUserSettings);
+
+		// settingsTextView.setText(builder.toString());
 	}
 
 	@Override

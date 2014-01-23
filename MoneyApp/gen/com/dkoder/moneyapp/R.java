@@ -12,26 +12,28 @@ public final class R {
         /**  Nav Drawer List Item Icons 
  Keep them in order as the titles are in 
          */
-        public static final int nav_drawer_icons=0x7f070001;
+        public static final int nav_drawer_icons=0x7f050003;
         /**  Nav Drawer Menu Items 
          */
-        public static final int nav_drawer_items=0x7f070000;
+        public static final int nav_drawer_items=0x7f050002;
+        public static final int syncFrequency=0x7f050000;
+        public static final int syncFrequencyValues=0x7f050001;
     }
     public static final class attr {
     }
     public static final class color {
-        public static final int black=0x7f04000a;
-        public static final int blue=0x7f040008;
-        public static final int counter_text_bg=0x7f040004;
-        public static final int counter_text_color=0x7f040005;
-        public static final int green=0x7f040007;
-        public static final int holo_blue_light=0x7f04000b;
-        public static final int list_background=0x7f040001;
-        public static final int list_background_pressed=0x7f040002;
-        public static final int list_divider=0x7f040003;
-        public static final int list_item_title=0x7f040000;
-        public static final int red=0x7f040006;
-        public static final int white=0x7f040009;
+        public static final int black=0x7f06000a;
+        public static final int blue=0x7f060008;
+        public static final int counter_text_bg=0x7f060004;
+        public static final int counter_text_color=0x7f060005;
+        public static final int green=0x7f060007;
+        public static final int holo_blue_light=0x7f06000b;
+        public static final int list_background=0x7f060001;
+        public static final int list_background_pressed=0x7f060002;
+        public static final int list_divider=0x7f060003;
+        public static final int list_item_title=0x7f060000;
+        public static final int red=0x7f060006;
+        public static final int white=0x7f060009;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -40,8 +42,8 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static final int activity_horizontal_margin=0x7f070000;
+        public static final int activity_vertical_margin=0x7f070001;
     }
     public static final class drawable {
         public static final int counter_bg=0x7f020000;
@@ -57,36 +59,36 @@ public final class R {
         public static final int list_selector=0x7f02000a;
     }
     public static final class id {
-        public static final int account_row=0x7f0a0017;
-        public static final int account_text=0x7f0a0019;
-        public static final int accounts=0x7f0a000c;
-        public static final int action_add=0x7f0a001b;
-        public static final int action_settings=0x7f0a001d;
-        public static final int action_transaction=0x7f0a001c;
-        public static final int adView=0x7f0a0007;
-        public static final int amount=0x7f0a0013;
-        public static final int cancel_button=0x7f0a0010;
-        public static final int categories=0x7f0a000b;
-        public static final int category_row=0x7f0a0014;
-        public static final int categroy_text=0x7f0a0016;
-        public static final int counter=0x7f0a0005;
-        public static final int date=0x7f0a0012;
-        public static final int datepicker=0x7f0a000d;
-        public static final int drawer_layout=0x7f0a0000;
-        public static final int edit_amount=0x7f0a000a;
-        public static final int edit_details=0x7f0a000e;
-        public static final int for_text=0x7f0a0015;
-        public static final int frame_container=0x7f0a0001;
-        public static final int from_text=0x7f0a0018;
-        public static final int icon=0x7f0a0003;
-        public static final int linearLayout=0x7f0a0006;
-        public static final int list_slidermenu=0x7f0a0002;
-        public static final int ok_button=0x7f0a000f;
-        public static final int pager=0x7f0a0008;
-        public static final int pts_main=0x7f0a0009;
-        public static final int title=0x7f0a0004;
-        public static final int totalTransactions=0x7f0a001a;
-        public static final int transaction_listview=0x7f0a0011;
+        public static final int account_row=0x7f0b0017;
+        public static final int account_text=0x7f0b0019;
+        public static final int accounts=0x7f0b000c;
+        public static final int action_add=0x7f0b001b;
+        public static final int action_settings=0x7f0b001d;
+        public static final int action_transaction=0x7f0b001c;
+        public static final int adView=0x7f0b0007;
+        public static final int amount=0x7f0b0013;
+        public static final int cancel_button=0x7f0b0010;
+        public static final int categories=0x7f0b000b;
+        public static final int category_row=0x7f0b0014;
+        public static final int categroy_text=0x7f0b0016;
+        public static final int counter=0x7f0b0005;
+        public static final int date=0x7f0b0012;
+        public static final int datepicker=0x7f0b000d;
+        public static final int drawer_layout=0x7f0b0000;
+        public static final int edit_amount=0x7f0b000a;
+        public static final int edit_details=0x7f0b000e;
+        public static final int for_text=0x7f0b0015;
+        public static final int frame_container=0x7f0b0001;
+        public static final int from_text=0x7f0b0018;
+        public static final int icon=0x7f0b0003;
+        public static final int linearLayout=0x7f0b0006;
+        public static final int list_slidermenu=0x7f0b0002;
+        public static final int ok_button=0x7f0b000f;
+        public static final int pager=0x7f0b0008;
+        public static final int pts_main=0x7f0b0009;
+        public static final int title=0x7f0b0004;
+        public static final int totalTransactions=0x7f0b001a;
+        public static final int transaction_listview=0x7f0b0011;
     }
     public static final class layout {
         public static final int activity_money_app=0x7f030000;
@@ -101,18 +103,28 @@ public final class R {
         public static final int transaction_summary=0x7f030009;
     }
     public static final class menu {
-        public static final int money_app=0x7f090000;
+        public static final int money_app=0x7f0a0000;
     }
     public static final class string {
-        public static final int Rs=0x7f060005;
-        public static final int account_title=0x7f060004;
-        public static final int action_settings=0x7f060001;
-        public static final int app_name=0x7f060000;
-        public static final int category_title=0x7f060003;
+        public static final int Rs=0x7f080005;
+        public static final int account_title=0x7f080004;
+        public static final int action_settings=0x7f080001;
+        public static final int app_name=0x7f080000;
+        public static final int category_title=0x7f080003;
         /**  Content Description 
          */
-        public static final int desc_list_item_icon=0x7f060006;
-        public static final int hello_world=0x7f060002;
+        public static final int desc_list_item_icon=0x7f080006;
+        public static final int hello_world=0x7f080002;
+        /**   Preference Activity 
+         */
+        public static final int pref_send_report=0x7f080007;
+        public static final int pref_send_report_summary=0x7f080008;
+        public static final int pref_sync_frequency=0x7f080009;
+        public static final int pref_sync_frequency_summary=0x7f08000a;
+        public static final int pref_update_setting=0x7f08000e;
+        public static final int pref_user_name=0x7f08000b;
+        public static final int pref_user_name_summary=0x7f08000c;
+        public static final int pref_user_profile=0x7f08000d;
     }
     public static final class style {
         /** 
@@ -136,10 +148,13 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f090000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080001;
+        public static final int AppTheme=0x7f090001;
+    }
+    public static final class xml {
+        public static final int settings=0x7f040000;
     }
 }
