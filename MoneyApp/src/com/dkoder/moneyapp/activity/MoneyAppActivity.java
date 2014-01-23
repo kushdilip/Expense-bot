@@ -63,18 +63,24 @@ public class MoneyAppActivity extends FragmentActivity {
 		navDrawerItems = new ArrayList<NavDrawerItem>();
 
 		// adding nav drawer items to array
-		// Transactions
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons
-				.getResourceId(0, -1)));
-		// Stats
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons
-				.getResourceId(1, -1)));
-		// Rate Us
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons
-				.getResourceId(2, -1)));
-		// Help
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons
-				.getResourceId(3, -1)));
+		
+		for (int i = 0; i < navMenuTitles.length; i++) {
+			navDrawerItems.add(new NavDrawerItem(navMenuTitles[i], navMenuIcons
+					.getResourceId(i, -1)));
+		}
+		
+//		// Transactions
+//		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons
+//				.getResourceId(0, -1)));
+//		// Stats
+//		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons
+//				.getResourceId(1, -1)));
+//		// Rate Us
+//		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons
+//				.getResourceId(2, -1)));
+//		// Help
+//		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons
+//				.getResourceId(3, -1)));
 
 		// Recycle the typed array.
 		navMenuIcons.recycle();

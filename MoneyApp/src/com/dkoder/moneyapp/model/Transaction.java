@@ -2,6 +2,7 @@ package com.dkoder.moneyapp.model;
 
 import java.util.Comparator;
 
+
 public class Transaction implements Comparable<Transaction> {
 
 	private int id;
